@@ -72,9 +72,10 @@ The project follows a simple structure:
   - `pages/`: React Router pages for different views.
   - `utils/`: Utility functions and helper files.
 - `public/`: Static assets and HTML template.
-- `src/index.tsx`: Entry point of the application.
+- `src/main.tsx`: Entry point of the application.
 - `src/store.ts`: Redux store configuration.
 - `src/routes.tsx`: Define application routes using React Router.
+- `src/index.css`: Define application styles.
 
 ## Features
 
