@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import AppWrapper from './routes'
+import AppWrapper from './App'
 import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
