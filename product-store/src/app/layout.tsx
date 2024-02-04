@@ -19,7 +19,9 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="en">
       <body className={inter.className}>
         <NavBar />
-        {children}
+        <main className=" h-full flex items-center justify-center flex-col gap-8">
+          {children}
+        </main>
       </body>
     </html>
   );
