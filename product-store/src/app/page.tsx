@@ -3,10 +3,10 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <h1 className=" text-4xl font-bold tracking-wide">
+      <h1 className=" text-4xl font-bold tracking-wide text-center">
         Welcome to Product store
       </h1>
-      <p className="w-[50%] leading-relaxed text-center tracking-wider">
+      <p className="w-[80%] md:w-[50%] leading-relaxed text-center tracking-wider">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates
         esse, ex soluta sapiente labore ut modi fugiat, sit illo ipsa minus
         dolorem aperiam. Aperiam, suscipit vero commodi porro cupiditate nihil!

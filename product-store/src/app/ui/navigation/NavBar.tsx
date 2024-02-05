@@ -14,7 +14,7 @@ const links = [
 export default function NavBar() {
   const pathName = usePathname();
   return (
-    <nav className="flex justify-between items-center py-4 px-20 fixed right-0 left-0">
+    <nav className="flex justify-between items-center py-4 px-20 fixed right-0 left-0 backdrop-blur-md bg-black/50">
       <div>
         <p className=" uppercase text-xl font-bold">ProductStore</p>
       </div>
