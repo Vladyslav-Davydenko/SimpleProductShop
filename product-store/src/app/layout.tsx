@@ -17,7 +17,7 @@ type LayoutProps = Readonly<{
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" className=" scroll-smooth">
       <body className={inter.className}>
         <NavBar />
         <main className=" min-h-full flex items-center justify-center flex-col gap-8">
