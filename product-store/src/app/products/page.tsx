@@ -7,7 +7,7 @@ export default function Products() {
         <span className="font-semibold uppercase text-xl">Best Perfumes</span>
       </div>
       <HorizontalMotion />
-      <div className="flex h-48 items-center justify-center">
+      <div className="flex w-full items-center justify-center main-section ">
         <span className="font-semibold uppercase">Next Section</span>
       </div>
     </main>

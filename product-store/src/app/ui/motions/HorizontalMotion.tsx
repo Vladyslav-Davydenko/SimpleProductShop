@@ -38,7 +38,7 @@ const cards: CardType[] = [
     id: 5,
   },
   {
-    url: "/perfumes/maxim-lozyanko-GxSiLG3UuUw-unsplash.jpg",
+    url: "/perfumes/vishal-banik-OhBmysUAjio-unsplash.jpg",
     title: "Maxim Lozyanko",
     id: 6,
   },
@@ -60,7 +60,7 @@ export default function HorizontalMotion() {
   return (
     <section
       ref={targetRef}
-      className="relative h-[600vh] border border-red-600"
+      className="relative h-[600vh] border-white border-2"
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
