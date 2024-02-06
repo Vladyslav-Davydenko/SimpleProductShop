@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
+    <main className=" min-h-full flex items-center justify-center flex-col gap-8 main-section ">
       <h1 className=" text-4xl font-bold tracking-wide text-center">
         Welcome to Product store
       </h1>
@@ -17,6 +17,6 @@ export default function Home() {
       >
         Go Shopping
       </Link>
-    </>
+    </main>
   );
 }

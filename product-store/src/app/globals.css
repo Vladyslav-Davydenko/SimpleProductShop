@@ -3,29 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --gradient-0: rgba(153, 148, 237, 1);
-  --gradient-25-75: rgb(249, 249, 249);
-  --gradient-50: rgb(255, 255, 255);
-  --gradient-100: rgba(237, 164, 244, 1);
-  --foreground-rgb: 0, 0, 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --gradient-0: rgba(22, 14, 158, 1);
-    --gradient-25-75: rgba(0, 0, 0, 1);
-    --gradient-50: rgba(0, 0, 3, 1);
-    --gradient-100: rgba(144, 13, 156, 1);
-  }
+  --foreground-rgb: 255, 255, 255;
+  --gradient-0: rgba(22, 14, 158, 1);
+  --gradient-25-75: rgba(0, 0, 0, 1);
+  --gradient-50: rgba(0, 0, 3, 1);
+  --gradient-100: rgba(144, 13, 156, 1);
 }
 
 html {
   background: #000;
-}
-
-body {
   color: rgb(var(--foreground-rgb));
+}
+.main-section {
   background: linear-gradient(
     145deg,
     var(--gradient-0) 0%,
@@ -34,7 +23,7 @@ body {
     var(--gradient-25-75) 75%,
     var(--gradient-100) 100%
   );
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 @layer utilities {
