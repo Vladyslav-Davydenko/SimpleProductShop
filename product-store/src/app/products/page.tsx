@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Products() {
   return (
     <main className="h-[900vh] flex items-center flex-col">
-      <div className="flex flex-col h-[200vh] w-full items-center justify-center main-section gap-8">
+      <div className="flex flex-col h-[200vh] w-full items-center justify-center main-section gap-32">
         <div className="h-[10%] flex items-center justify-center">
           <p className="text-4xl font-bold tracking-wide text-center mb-10">
             Perfumes for everyone
