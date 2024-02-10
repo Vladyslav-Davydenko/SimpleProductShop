@@ -1,5 +1,6 @@
 import HorizontalMotion from "../ui/motions/HorizontalMotion";
 import Image from "next/image";
+import Card from "../ui/card/Card";
 
 export default function Products() {
   return (
@@ -19,7 +20,7 @@ export default function Products() {
               repellat reiciendis minima culpa.
             </p>
           </div>
-          <div className="group relative h-[450px] w-[30%] overflow-hidden bg-neutral-200 group border-white border-2">
+          {/* <div className="group relative h-[450px] w-[30%] overflow-hidden bg-neutral-200 group border-white border-2">
             <Image
               src="/perfumes/mans-perfume.jpg"
               alt="Blue De Chanel"
@@ -43,7 +44,16 @@ export default function Products() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <Card
+            card={{
+              url: "/perfumes/mans-perfume.jpg",
+              title: "Blue De Chanel",
+              id: 101,
+            }}
+            height="450px"
+            width="30%"
+          />
         </div>
         <div className="flex gap-8 w-[70%] justify-center items-center">
           <div className="group relative h-[450px] w-[30%] overflow-hidden bg-neutral-200 group border-white border-2">
