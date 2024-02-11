@@ -27,6 +27,7 @@ export default function Products() {
               src="/perfumes/mans-perfume.jpg"
               alt="Blue De Chanel"
               style={{ objectFit: "cover" }}
+              priority={true}
               fill
               className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-105"
             />
