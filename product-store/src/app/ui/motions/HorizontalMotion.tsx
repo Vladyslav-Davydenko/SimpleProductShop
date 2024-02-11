@@ -65,14 +65,7 @@ export default function HorizontalMotion() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
           {cards.map((card) => {
-            return (
-              <Card
-                card={card}
-                key={card.id}
-                height={"450px"}
-                width={"450px"}
-              />
-            );
+            return <Card card={card} key={card.id} />;
           })}
         </motion.div>
       </div>
