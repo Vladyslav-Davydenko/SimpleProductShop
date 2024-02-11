@@ -55,14 +55,14 @@ export default function HorizontalMotion() {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["30%", "-30%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-60%"]);
 
   return (
     <section
       ref={targetRef}
       className="relative h-[600vh] border-white border-2"
     >
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen w-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
           {cards.map((card) => {
             return <Card card={card} key={card.id} />;
