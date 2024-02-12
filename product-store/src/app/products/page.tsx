@@ -1,6 +1,6 @@
 import HorizontalMotion from "../ui/motions/HorizontalMotion";
 import Image from "next/image";
-import Card from "../ui/card/Card";
+import PriceButton from "@/app/ui/button/PriceButton";
 
 export default function Products() {
   return (
@@ -43,7 +43,7 @@ export default function Products() {
                   </p>
                 </div>
                 <div className=" flex items-end justify-end w-[20%]">
-                  <p className=" text-lg font-semibold tracking-wide">300$</p>
+                  <PriceButton price={300} />
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function Products() {
                   </p>
                 </div>
                 <div className=" flex items-end justify-end w-[20%]">
-                  <p className=" text-lg font-semibold tracking-wide">300$</p>
+                  <PriceButton price={300} />
                 </div>
               </div>
             </div>

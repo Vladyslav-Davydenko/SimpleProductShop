@@ -2,6 +2,7 @@
 
 import { CardType } from "../motions/HorizontalMotion";
 import Image from "next/image";
+import PriceButton from "@/app/ui/button/PriceButton";
 
 interface CardProps {
   card: CardType;
@@ -32,7 +33,7 @@ export default function Card({ card }: CardProps) {
             </p>
           </div>
           <div className=" flex items-end justify-end w-[30%]">
-            <p className=" text-lg font-semibold tracking-wide">300$</p>
+            <PriceButton price={300} />
           </div>
         </div>
       </div>
