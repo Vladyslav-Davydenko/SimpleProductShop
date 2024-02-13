@@ -4,11 +4,7 @@ import { CardType } from "../motions/HorizontalMotion";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
 
-interface CardProps {
-  card: CardType;
-}
-
-export default function Card({ card }: CardProps) {
+export default function Card({ card }: { card: CardType }) {
   return (
     <div
       key={card.id}
