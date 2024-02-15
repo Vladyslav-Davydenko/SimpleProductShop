@@ -14,8 +14,10 @@ async function seedUsers(client) {
       CREATE TABLE IF NOT EXISTS perfumes (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
+        description TEXT NOT NULL,
         url TEXT NOT NULL UNIQUE,
-        price NUMERIC NOT NULL
+        price NUMERIC NOT NULL,
+        date DATE NOT NULL
       );
     `;
 

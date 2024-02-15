@@ -4,7 +4,11 @@ import { CardType } from "../motions/HorizontalMotion";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
 
-export default function Card({ card }: { card: CardType }) {
+import { fetchCard } from "@/app/lib/data";
+
+export default async function Card({ id }: { id: number }) {
+  const card = await fetchCard(id);
+
   return (
     <div
       key={card.id}

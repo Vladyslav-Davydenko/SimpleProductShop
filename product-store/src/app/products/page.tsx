@@ -1,6 +1,7 @@
 import HorizontalMotion from "../ui/motions/HorizontalMotion";
-import Image from "next/image";
-import PriceButton from "@/app/ui/button/PriceButton";
+import { CardVerticalSceleton } from "../ui/sceletons/sceletons";
+import { Suspense } from "react";
+import VerticalCard from "../ui/card/VerticalCard";
 
 export default function Products() {
   return (
@@ -20,63 +21,24 @@ export default function Products() {
               repellat reiciendis minima culpa.
             </p>
           </div>
-          <div
-            className={`group relative h-[450px] w-[30%] overflow-hidden bg-neutral-200 group border-white border-2`}
-          >
-            <Image
-              src="/perfumes/mans-perfume.jpg"
-              alt="Blue De Chanel"
-              style={{ objectFit: "cover" }}
-              priority={true}
-              fill
-              className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-105"
+          <Suspense fallback={<CardVerticalSceleton />}>
+            <VerticalCard
+              url="/perfumes/womans-perfume.jpg"
+              title="Blue De Chanel"
+              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
+              culpa"
             />
-            <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/100 to-black/50 p-8 text-white backdrop-blur-sm translate-y-48 group-hover:translate-y-0 transition-all group-hover:scale-105 duration-500">
-              <div className="flex gap-3">
-                <div className="flex flex-col gap-2 w-[80%]">
-                  <p className="uppercase text-xl font-semibold tracking-wide">
-                    Blue De Chanel
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis a culpa
-                  </p>
-                </div>
-                <div className=" flex items-end justify-end w-[20%]">
-                  <PriceButton price={300} />
-                </div>
-              </div>
-            </div>
-          </div>
+          </Suspense>
         </div>
         <div className="flex gap-8 w-[70%] justify-center items-center">
-          <div
-            className={`group relative h-[450px] w-[30%] overflow-hidden bg-neutral-200 group border-white border-2`}
-          >
-            <Image
-              src="/perfumes/womans-perfume.jpg"
-              alt="Blue De Chanel"
-              style={{ objectFit: "cover" }}
-              fill
-              className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-105"
+          <Suspense fallback={<CardVerticalSceleton />}>
+            <VerticalCard
+              url="/perfumes/mans-perfume.jpg"
+              title="Blue De Chanel"
+              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
+              culpa"
             />
-            <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/100 to-black/50 p-8 text-white backdrop-blur-sm translate-y-48 group-hover:translate-y-0 transition-all group-hover:scale-105 duration-500">
-              <div className="flex gap-3">
-                <div className="flex flex-col gap-2 w-[80%]">
-                  <p className="uppercase text-xl font-semibold tracking-wide">
-                    Blue De Chanel
-                  </p>
-                  <p className="text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Facilis a culpa
-                  </p>
-                </div>
-                <div className=" flex items-end justify-end w-[20%]">
-                  <PriceButton price={300} />
-                </div>
-              </div>
-            </div>
-          </div>
+          </Suspense>
           <div className="w-[70%]">
             <p className="leading-relaxed text-end tracking-wider">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.

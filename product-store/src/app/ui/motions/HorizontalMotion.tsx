@@ -2,6 +2,8 @@
 
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
+import { Suspense } from "react";
+import { CardSquareSceleton } from "../sceletons/sceletons";
 
 import Card from "../card/Card";
 
@@ -65,7 +67,11 @@ export default function HorizontalMotion() {
       <div className="sticky top-0 flex h-screen w-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
           {cards.map((card) => {
-            return <Card card={card} key={card.id} />;
+            return (
+              <Suspense key={card.id} fallback={<CardSquareSceleton />}>
+                <Card id={card.id} key={card.id} />{" "}
+              </Suspense>
+            );
           })}
         </motion.div>
       </div>

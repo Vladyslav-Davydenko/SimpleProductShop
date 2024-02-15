@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node -r dotenv/config ./scripts/seed.js"
+    "seed": "node -r dotenv/config ./src/scripts/seed.js"
   },
   "dependencies": {
     "@vercel/postgres": "^0.7.2",
     "clsx": "^2.1.0",
+    "dotenv": "^16.4.4",
     "framer-motion": "^11.0.3",
     "next": "14.1.0",
     "react": "^18",
