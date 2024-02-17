@@ -51,7 +51,11 @@ const cards: CardType[] = [
   },
 ];
 
-export default function HorizontalMotion() {
+interface HorizontalMotionProps {
+  cards: CardType[];
+}
+
+export default function HorizontalMotion({ cards }: HorizontalMotionProps) {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -69,7 +73,7 @@ export default function HorizontalMotion() {
           {cards.map((card) => {
             return (
               <Suspense key={card.id} fallback={<CardSquareSceleton />}>
-                <Card id={card.id} key={card.id} />{" "}
+                <Card card={card} key={card.id} />{" "}
               </Suspense>
             );
           })}

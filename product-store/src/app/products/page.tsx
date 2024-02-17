@@ -1,9 +1,13 @@
-import HorizontalMotion from "../ui/motions/HorizontalMotion";
-import { CardVerticalSceleton } from "../ui/sceletons/sceletons";
+import {
+  CardVerticalSceleton,
+  CardSquareSceleton,
+} from "../ui/sceletons/sceletons";
 import { Suspense } from "react";
 import VerticalCard from "../ui/card/VerticalCard";
 
-export default function Products() {
+import CardWrapper from "../ui/wrapeers/CardWrapers";
+
+export default async function Products() {
   return (
     <main className="h-[900vh] flex items-center flex-col">
       <div className="flex flex-col h-[200vh] w-full items-center justify-center main-section gap-32">
@@ -49,7 +53,9 @@ export default function Products() {
           </div>
         </div>
       </div>
-      <HorizontalMotion />
+      <Suspense fallback={<CardSquareSceleton />}>
+        <CardWrapper />
+      </Suspense>
       <div className="flex w-full items-center justify-center main-section h-[100vh]">
         <span className="font-semibold uppercase">Next Section</span>
       </div>

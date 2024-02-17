@@ -1,12 +1,7 @@
 const { db } = require("@vercel/postgres");
-const {
-  invoices,
-  customers,
-  revenue,
-  users,
-} = require("../app/lib/placeholder-data.js");
+const { perfumes } = require("../app/lib/placeholder-data");
 
-async function seedUsers(client) {
+async function seedPerfumes(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "users" table if it doesn't exist
@@ -27,8 +22,8 @@ async function seedUsers(client) {
     const insertedPerfumes = await Promise.all(
       perfumes.map(async (perfume) => {
         return client.sql`
-          INSERT INTO perfumes (id, title, url, price)
-          VALUES (${perfume.id}, ${perfume.title}, ${perfume.url}, ${perfume.price})
+          INSERT INTO perfumes (id, title, url, price, description, date)
+          VALUES (${perfume.id}, ${perfume.title}, ${perfume.url}, ${perfume.price}, ${perfume.description}, ${perfume.date})
           ON CONFLICT (id) DO NOTHING;
         `;
       })

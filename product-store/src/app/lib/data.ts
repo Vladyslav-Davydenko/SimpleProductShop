@@ -1,16 +1,16 @@
 import { sql } from "@vercel/postgres";
 import { CardType } from "../ui/motions/HorizontalMotion";
 
-export async function fetchCard(id: number) {
+export async function fetchPefumes(): Promise<CardType[]> {
   try {
-    const data = await sql`
-        SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price perfumes.price 
+    const cards = await sql<CardType>`
+        SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price, perfumes.description 
         FROM perfumes
-        WHERE perfumes.id == ${id}
+        ORDER BY perfumes.date DESC
+        LIMIT 8
         `;
 
-    console.log(data);
-    return data.rows[0];
+    return cards.rows;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch the latest invoices.");

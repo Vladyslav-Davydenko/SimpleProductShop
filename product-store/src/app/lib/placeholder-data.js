@@ -6,7 +6,7 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-01",
-    id: 1,
+    id: "754dd585-2ef5-4461-86a3-6b91ee164cc8",
   },
   {
     url: "/perfumes/jeroen-den-otter-2b0JeJTEclQ-unsplash.jpg",
@@ -15,7 +15,7 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-02",
-    id: 2,
+    id: "ff781873-8e9f-4212-a815-0a5b56ca57d5",
   },
   {
     url: "/perfumes/laura-chouette-4sKdeIMiFEI-unsplash.jpg",
@@ -24,7 +24,7 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-03",
-    id: 3,
+    id: "7a07ebb4-b324-4b69-b614-e9bb6062b535",
   },
   {
     url: "/perfumes/marisa-garrido-3aql6Y9LKFo-unsplash.jpg",
@@ -33,7 +33,7 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-03",
-    id: 4,
+    id: "eb889012-7ed3-44f5-892a-ef827ad3b220",
   },
   {
     url: "/perfumes/laura-chouette-gbT2KAq1V5c-unsplash.jpg",
@@ -42,7 +42,7 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-04",
-    id: 5,
+    id: "baf89890-4b5f-44cd-ae1f-dd679f54e552",
   },
   {
     url: "/perfumes/vishal-banik-OhBmysUAjio-unsplash.jpg",
@@ -51,7 +51,7 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-05",
-    id: 6,
+    id: "f253c828-6ed3-4df6-b790-8abaddb04d74",
   },
   {
     url: "/perfumes/parth-natani-uqJdOfHGb-w-unsplash.jpg",
@@ -60,6 +60,10 @@ const perfumes = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
     date: "2022-12-06",
-    id: 7,
+    id: "e0105f8e-55f7-4fe8-8be8-484fae6645c8",
   },
 ];
+
+module.exports = {
+  perfumes,
+};

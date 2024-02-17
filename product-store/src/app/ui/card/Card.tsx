@@ -4,11 +4,11 @@ import { CardType } from "../motions/HorizontalMotion";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
 
-import { fetchCard } from "@/app/lib/data";
+interface CardProps {
+  card: CardType;
+}
 
-export default async function Card({ id }: { id: number }) {
-  const card = await fetchCard(id);
-
+export default async function Card({ card }: CardProps) {
   return (
     <div
       key={card.id}
