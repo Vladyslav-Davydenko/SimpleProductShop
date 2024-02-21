@@ -1,11 +1,8 @@
-import {
-  CardVerticalSceleton,
-  CardSquareSceleton,
-} from "../ui/sceletons/sceletons";
+import { CardSquareSceleton } from "../ui/sceletons/sceletons";
 import { Suspense } from "react";
 import VerticalCard from "../ui/card/VerticalCard";
 
-import CardWrapper from "../ui/wrapeers/CardWrapers";
+import HorizontalMotionWrapper from "../ui/wrapeers/HorizontalMotionWrapper";
 
 export default async function Products() {
   return (
@@ -25,24 +22,20 @@ export default async function Products() {
               repellat reiciendis minima culpa.
             </p>
           </div>
-          <Suspense fallback={<CardVerticalSceleton />}>
-            <VerticalCard
-              url="/perfumes/womans-perfume.jpg"
-              title="Blue De Chanel"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
+          <VerticalCard
+            url="/perfumes/womans-perfume.jpg"
+            title="Blue De Chanel"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
               culpa"
-            />
-          </Suspense>
+          />
         </div>
         <div className="flex gap-8 w-[70%] justify-center items-center">
-          <Suspense fallback={<CardVerticalSceleton />}>
-            <VerticalCard
-              url="/perfumes/mans-perfume.jpg"
-              title="Blue De Chanel"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
+          <VerticalCard
+            url="/perfumes/mans-perfume.jpg"
+            title="Blue De Chanel"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
               culpa"
-            />
-          </Suspense>
+          />
           <div className="w-[70%]">
             <p className="leading-relaxed text-end tracking-wider">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -54,7 +47,7 @@ export default async function Products() {
         </div>
       </div>
       <Suspense fallback={<CardSquareSceleton />}>
-        <CardWrapper />
+        <HorizontalMotionWrapper />
       </Suspense>
       <div className="flex w-full items-center justify-center main-section h-[100vh]">
         <span className="font-semibold uppercase">Next Section</span>

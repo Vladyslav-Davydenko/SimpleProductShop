@@ -13,7 +13,7 @@ export default function Home() {
       </p>
       <Link
         href={"/products"}
-        className=" opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-400 rounded-full px-6 py-2 text-white"
+        className=" opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-400 rounded-full px-6 py-2 text-white text-center"
       >
         Go Shopping
       </Link>

@@ -1,5 +1,3 @@
-"use client";
-
 import { CardType } from "../motions/HorizontalMotion";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
