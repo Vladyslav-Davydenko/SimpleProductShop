@@ -6,12 +6,7 @@ import { Suspense } from "react";
 import { CardSquareSceleton } from "../sceletons/sceletons";
 
 import Card from "../card/Card";
-
-export type CardType = {
-  url: string;
-  title: string;
-  id: string;
-};
+import { CardType } from "@/app/_types/Card";
 
 interface HorizontalMotionProps {
   cards: CardType[];

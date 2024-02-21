@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { CardType } from "../ui/motions/HorizontalMotion";
+import { CardType } from "../_types/Card";
 
 export async function fetchPefumes(): Promise<CardType[]> {
   try {
