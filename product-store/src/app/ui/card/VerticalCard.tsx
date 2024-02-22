@@ -26,14 +26,11 @@ export default function VerticalCard({
       />
       <div className="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black/100 to-black/50 py-8 px-6 text-white backdrop-blur-sm translate-y-48 group-hover:translate-y-0 transition-all group-hover:scale-105 duration-500">
         <div className="flex gap-3">
-          <div className="flex flex-col gap-6 w-[80%]">
+          <div className="flex flex-col gap-6 w-[100%]">
             <p className="uppercase text-xl font-semibold tracking-wide">
               {title}
             </p>
             <p className="text-sm text-gray-400">{description}</p>
-          </div>
-          <div className=" flex items-end justify-end w-[20%]">
-            <PriceButton price={300} />
           </div>
         </div>
       </div>

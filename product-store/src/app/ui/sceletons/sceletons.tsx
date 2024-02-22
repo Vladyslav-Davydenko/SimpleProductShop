@@ -46,9 +46,7 @@ export const SquareCardSceleton = () => {
             </p>
             <p className="text-sm text-gray-400">loading...</p>
           </div>
-          <div className=" flex items-end justify-end w-[30%]">
-            <PriceButton price={0} />
-          </div>
+          <div className=" flex items-end justify-end w-[30%]"></div>
         </div>
       </div>
     </div>
