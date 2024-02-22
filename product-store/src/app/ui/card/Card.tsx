@@ -39,7 +39,7 @@ export default function Card({ card }: CardProps) {
         alt={card.title}
         style={{ objectFit: "cover" }}
         fill
-        className="absolute inset-0 z-0 transition-transform duration-500 group-hover:scale-105"
+        className="absolute inset-0 z-0 transition-transform duration-500 group-hover:scale-105 backface-hidden"
       />
       <div className="absolute bottom-0 w-full h-[35%] bg-gradient-to-t from-black/100 to-black/50 p-8 text-white backdrop-blur-sm translate-y-48 group-hover:translate-y-0 transition-all group-hover:scale-105 duration-500">
         <div className="flex gap-3">

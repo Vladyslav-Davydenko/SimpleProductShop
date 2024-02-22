@@ -26,6 +26,10 @@ html {
   min-height: 100dvh;
 }
 
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
