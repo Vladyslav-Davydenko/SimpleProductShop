@@ -1,12 +1,34 @@
+"use client";
+
 import { CardType } from "@/app/_types/Card";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
+
+import { useCart } from "@/app/_providers/Cart";
+import { CartItem } from "@/app/_types/Cart";
+import { useEffect, useState } from "react";
 
 interface CardProps {
   card: CardType;
 }
 
-export default async function Card({ card }: CardProps) {
+export default function Card({ card }: CardProps) {
+  const { addItemToCart, isProductInCart, cart } = useCart();
+  const [disabled, setDisabled] = useState<boolean>(false);
+
+  const handleAddToCart = (card: CardType) => {
+    const newCartItem: CartItem = {
+      item: card,
+      quantity: 1,
+    };
+    setDisabled(true);
+    addItemToCart(newCartItem);
+  };
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
   return (
     <div
       key={card.id}
@@ -31,7 +53,11 @@ export default async function Card({ card }: CardProps) {
             </p>
           </div>
           <div className=" flex items-end justify-end w-[30%]">
-            <PriceButton price={300} />
+            <PriceButton
+              price={300}
+              onClick={() => handleAddToCart(card)}
+              isDisabled={disabled}
+            />
           </div>
         </div>
       </div>
