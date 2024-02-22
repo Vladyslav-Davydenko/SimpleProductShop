@@ -1,4 +1,4 @@
-import { CardType } from "../motions/HorizontalMotion";
+import { CardType } from "@/app/_types/Card";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
 
