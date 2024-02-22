@@ -20,7 +20,7 @@ export type CartContext = {
   deleteItemFromCart: (product: CardType) => void;
   cartIsEmpty: boolean | undefined;
   clearCart: () => void;
-  isProductInCart: (product: CardType) => void;
+  isProductInCart: (product: CardType) => boolean;
   cartTotal: number;
 };
 

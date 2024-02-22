@@ -29,7 +29,7 @@ export const cartReducer = (cart: CartType, action: CartAction) => {
     case "ADD_ITEM": {
       const { payload: incomingItem } = action;
 
-      const productId = typeof incomingItem.item.id;
+      const productId = incomingItem.item.id;
       const indexInCart = cart?.items?.findIndex(
         (item) => item.item.id === productId
       );

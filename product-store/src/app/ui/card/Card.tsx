@@ -14,14 +14,12 @@ interface CardProps {
 
 export default function Card({ card }: CardProps) {
   const { addItemToCart, isProductInCart, cart } = useCart();
-  const [disabled, setDisabled] = useState<boolean>(false);
 
   const handleAddToCart = (card: CardType) => {
     const newCartItem: CartItem = {
       item: card,
       quantity: 1,
     };
-    setDisabled(true);
     addItemToCart(newCartItem);
   };
 
@@ -56,7 +54,7 @@ export default function Card({ card }: CardProps) {
             <PriceButton
               price={300}
               onClick={() => handleAddToCart(card)}
-              isDisabled={disabled}
+              isDisabled={isProductInCart(card)}
             />
           </div>
         </div>
