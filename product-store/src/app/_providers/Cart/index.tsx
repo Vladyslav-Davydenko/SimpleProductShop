@@ -17,7 +17,7 @@ import {
 export type CartContext = {
   cart: CartType;
   addItemToCart: (item: CartItem) => void;
-  deleteItemFromCart: (product: CardType) => void;
+  deleteItemFromCart: (product: CartItem) => void;
   cartIsEmpty: boolean | undefined;
   clearCart: () => void;
   isProductInCart: (product: CardType) => boolean;
@@ -66,7 +66,7 @@ export const CartProvider: FC<CartProviderProps> = (props) => {
     });
   }, []);
 
-  const deleteItemFromCart = useCallback((incomingProduct: CardType) => {
+  const deleteItemFromCart = useCallback((incomingProduct: CartItem) => {
     dispatchCart({
       type: "DELETE_ITEM",
       payload: incomingProduct,

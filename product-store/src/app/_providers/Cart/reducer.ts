@@ -16,7 +16,7 @@ type CartAction =
     }
   | {
       type: "DELETE_ITEM";
-      payload: CardType;
+      payload: CartItem;
     }
   | {
       type: "CLEAR_CART";
@@ -60,7 +60,7 @@ export const cartReducer = (cart: CartType, action: CartAction) => {
       const withDeletedItem = { ...cart };
 
       const indexInCart = cart?.items?.findIndex(
-        ({ item }) => item.id === incomingItem.id
+        ({ item }) => item.id === incomingItem.item.id
       );
 
       if (

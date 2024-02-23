@@ -6,10 +6,10 @@ import CartItem from "../ui/cart/CartItem";
 export default function Cart() {
   const { cart } = useCart();
   return (
-    <main className="h-[100vh] flex items-center flex-col">
-      <div className="flex h-full gap-8 w-full">
-        <div className="w-[70%] p-12 mt-20 overflow-hidden">
-          <div className="grid grid-cols-5 text-center">
+    <main className="h-[100vh] flex items-center flex-col mb-48">
+      <div className="flex h-[100%] gap-8 w-full mt-20">
+        <div className="w-[70%] px-12 overflow-scroll relative pb-20">
+          <div className="grid grid-cols-5 text-center sticky top-0 left-0 right-0 backdrop-blur-md bg-black/50 z-10 py-4">
             <p className=" uppercase font-semibold text-md opacity-80 col-span-2">
               Product
             </p>
