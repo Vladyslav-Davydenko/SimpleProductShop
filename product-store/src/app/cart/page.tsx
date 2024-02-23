@@ -4,7 +4,7 @@ import { useCart } from "../_providers/Cart";
 import CartItem from "../ui/cart/CartItem";
 
 export default function Cart() {
-  const { cart } = useCart();
+  const { cart, clearCart, cartIsEmpty } = useCart();
   return (
     <main className="h-[100vh] flex items-center flex-col mb-48">
       <div className="flex h-[100%] gap-8 w-full mt-20">
@@ -24,6 +24,21 @@ export default function Cart() {
               return <CartItem cartItem={item} key={item.item.id} />;
             })}
           </div>
+          {!cartIsEmpty ? (
+            <div className="pt-8 col-span-5 flex justify-end">
+              <button
+                className="opacity-80 hover:opacity-100 transition-all duration-300 bg-red-500 rounded-full px-3 py-1 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
+                onClick={clearCart}
+                disabled={cartIsEmpty}
+              >
+                Clear
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center text-md opacity-80 h-[85%]">
+              <p>Nothing has been added to the cart</p>
+            </div>
+          )}
         </div>
         <div className="w-[30%] side-section h-full border-white border-l-2 flex justify-center items-center flex-col">
           <p>Total price:$</p>

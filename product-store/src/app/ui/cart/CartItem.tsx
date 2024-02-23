@@ -15,7 +15,7 @@ interface CartItemProps {
 export default function CartItem({ cartItem }: CartItemProps) {
   const [quantity, setQuantity] = useState<number>(cartItem.quantity ?? 1);
 
-  const { addItemToCart, clearCart, deleteItemFromCart } = useCart();
+  const { addItemToCart, deleteItemFromCart } = useCart();
 
   const incrementQuantity = () => {
     const newQuantity = quantity + 1;
