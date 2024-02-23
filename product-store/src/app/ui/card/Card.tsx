@@ -52,7 +52,7 @@ export default function Card({ card }: CardProps) {
           </div>
           <div className=" flex items-end justify-end w-[30%]">
             <PriceButton
-              price={300}
+              price={card.price}
               onClick={() => handleAddToCart(card)}
               isDisabled={isProductInCart(card)}
             />

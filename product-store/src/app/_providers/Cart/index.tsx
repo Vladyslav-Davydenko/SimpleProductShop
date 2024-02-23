@@ -22,6 +22,7 @@ export type CartContext = {
   clearCart: () => void;
   isProductInCart: (product: CardType) => boolean;
   cartTotal: number;
+  totalPrice: number;
 };
 
 interface CartProviderProps {
@@ -43,6 +44,7 @@ export const CartProvider: FC<CartProviderProps> = (props) => {
   });
 
   const [total, setTotal] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const isProductInCart = useCallback(
     (incomingProduct: CardType): boolean => {
@@ -84,6 +86,16 @@ export const CartProvider: FC<CartProviderProps> = (props) => {
       return acc + (typeof item?.quantity === "number" ? item.quantity : 0);
     }, 0);
 
+    const newPriceTotal = cart?.items?.reduce((acc, item) => {
+      return (
+        acc +
+        (typeof item?.quantity === "number"
+          ? item.quantity * item.item.price
+          : 0)
+      );
+    }, 0);
+
+    setTotalPrice(newPriceTotal);
     setTotal(newTotal);
   }, [cart]);
 
@@ -97,6 +109,7 @@ export const CartProvider: FC<CartProviderProps> = (props) => {
         clearCart,
         isProductInCart,
         cartTotal: total,
+        totalPrice,
       }}
     >
       {children}

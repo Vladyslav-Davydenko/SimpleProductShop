@@ -4,7 +4,7 @@ import { useCart } from "../_providers/Cart";
 import CartItem from "../ui/cart/CartItem";
 
 export default function Cart() {
-  const { cart, clearCart, cartIsEmpty } = useCart();
+  const { cart, clearCart, cartIsEmpty, totalPrice } = useCart();
   return (
     <main className="h-[100vh] flex items-center flex-col mb-48">
       <div className="flex h-[100%] gap-8 w-full mt-20">
@@ -41,7 +41,7 @@ export default function Cart() {
           )}
         </div>
         <div className="w-[30%] side-section h-full border-white border-l-2 flex justify-center items-center flex-col">
-          <p>Total price:$</p>
+          <p>Total price:{totalPrice}$</p>
         </div>
       </div>
     </main>
