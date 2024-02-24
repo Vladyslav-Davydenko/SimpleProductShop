@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "@/app/ui/navigation/NavBar";
-import Footer from "./ui/footer/Footer";
+
 import "./globals.css";
 import { Providers } from "./_providers";
 
@@ -23,7 +23,6 @@ export default function RootLayout({ children }: LayoutProps) {
         <Providers>
           <NavBar />
           {children}
-          <Footer />
         </Providers>
       </body>
     </html>
