@@ -71,7 +71,7 @@ export default function Cart() {
             <div className="flex justify-center items-center mt-10">
               <button
                 className="flex gap-4 justify-center items-center opacity-80 hover:opacity-100 transition-all duration-300 bg-blue-400 rounded-full px-6 py-3 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
-                disabled={!isAgreed}
+                disabled={!isAgreed || cartIsEmpty}
               >
                 Checkout
                 <ShoppingBagIcon className="h-6 w-6" />
