@@ -1,3 +1,5 @@
+"use client";
+
 import Search from "../ui/search/Search";
 
 export default async function Products() {
