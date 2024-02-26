@@ -1,48 +1,25 @@
 "use client";
 
 import { CartItem } from "@/app/_types/Cart";
-import { useState } from "react";
 
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 import Image from "next/image";
-import { useCart } from "@/app/_providers/Cart";
+
+import useCartActions from "@/app/_hooks/useCartActions";
 
 interface CartItemProps {
   cartItem: CartItem;
 }
 
 export default function CartItem({ cartItem }: CartItemProps) {
-  const [quantity, setQuantity] = useState<number>(cartItem.quantity ?? 1);
-
-  const { addItemToCart, deleteItemFromCart } = useCart();
-
-  const incrementQuantity = () => {
-    const newQuantity = quantity + 1;
-
-    setQuantity(newQuantity);
-    addItemToCart({ ...cartItem, quantity: Number(newQuantity) });
-  };
-
-  const decrementQuantity = () => {
-    const newQuantity = quantity > 1 ? quantity - 1 : quantity;
-
-    setQuantity(newQuantity);
-    addItemToCart({ ...cartItem, quantity: Number(newQuantity) });
-  };
-
-  const enterQty = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updatedQty = Number(e.target.value);
-
-    if (!isNaN(updatedQty)) {
-      setQuantity(updatedQty);
-      addItemToCart({ ...cartItem, quantity: Number(updatedQty) });
-    }
-  };
-
-  const handleDeleteItem = () => {
-    deleteItemFromCart(cartItem);
-  };
+  const {
+    quantity,
+    incrementQuantity,
+    decrementQuantity,
+    enterQty,
+    handleDeleteItem,
+  } = useCartActions(cartItem);
 
   const { item: product } = cartItem;
   return (
@@ -66,7 +43,11 @@ export default function CartItem({ cartItem }: CartItemProps) {
         <p>{product.price}$</p>
       </div>
       <div className="flex gap-6 items-center justify-center">
-        <button className="text-2xl" onClick={decrementQuantity}>
+        <button
+          className="text-2xl opacity-80 hover:opacity-100 transition-opacity disabled:transition-none"
+          onClick={decrementQuantity}
+          disabled={quantity <= 1}
+        >
           -
         </button>
         <input
@@ -75,7 +56,10 @@ export default function CartItem({ cartItem }: CartItemProps) {
           value={quantity}
           onChange={enterQty}
         />
-        <button className="text-2xl" onClick={incrementQuantity}>
+        <button
+          className="text-2xl opacity-80 hover:opacity-100 transition-opacity"
+          onClick={incrementQuantity}
+        >
           +
         </button>
       </div>

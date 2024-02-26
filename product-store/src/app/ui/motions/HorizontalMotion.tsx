@@ -28,7 +28,6 @@ export default function HorizontalMotion({ cards }: HorizontalMotionProps) {
     <section
       ref={targetRef}
       className="relative h-[600vh] border-white border-t-2"
-      id="product-content"
     >
       <div className="sticky top-0 flex h-screen w-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
