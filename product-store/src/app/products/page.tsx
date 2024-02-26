@@ -1,5 +1,3 @@
-"use client";
-
 import Search from "../ui/search/Search";
 
 export default async function Products() {
@@ -10,7 +8,7 @@ export default async function Products() {
           Filters
         </div>
         <div className="w-[80%] flex flex-col gap-6 items-center justify-start h-full">
-          <Search />
+          {/* <Search /> */}
           <div className="border w-full h-full">Products</div>
         </div>
       </div>
