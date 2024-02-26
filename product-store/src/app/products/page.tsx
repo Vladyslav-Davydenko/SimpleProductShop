@@ -1,5 +1,7 @@
 import Search from "../ui/search/Search";
 
+import { Suspense } from "react";
+
 export default async function Page() {
   return (
     <main className="flex flex-col h-[100vh] w-full items-center justify-center">
@@ -8,7 +10,9 @@ export default async function Page() {
           Filters
         </div>
         <div className="w-[80%] flex flex-col gap-6 items-center justify-start h-full">
-          <Search />
+          <Suspense>
+            <Search />
+          </Suspense>
           <div className="border w-full h-full">Products</div>
         </div>
       </div>

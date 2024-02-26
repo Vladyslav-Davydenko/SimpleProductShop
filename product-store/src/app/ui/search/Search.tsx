@@ -9,16 +9,16 @@ export default function Search() {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  // const handleSearch = useDebouncedCallback((term: string) => {
-  //   const params = new URLSearchParams(searchParams);
-  //   params.set("page", "1");
-  //   if (term) {
-  //     params.set("query", term);
-  //   } else {
-  //     params.delete("query");
-  //   }
-  //   replace(`${pathname}?${params.toString()}`);
-  // }, 300);
+  const handleSearch = useDebouncedCallback((term: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("page", "1");
+    if (term) {
+      params.set("query", term);
+    } else {
+      params.delete("query");
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }, 300);
 
   return (
     <div className="relative">
@@ -29,7 +29,7 @@ export default function Search() {
         type="text"
         placeholder="Search Products"
         id="search-products"
-        // onChange={(e) => handleSearch(e.target.value)}
+        onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get("query")?.toString()}
         className=" bg-transparent w-[70vw] border border-white rounded-lg pl-9 py-2 outline-blue-500"
       />
