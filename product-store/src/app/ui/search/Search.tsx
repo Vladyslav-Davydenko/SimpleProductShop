@@ -19,6 +19,7 @@ export default function Search() {
     }
     replace(`${pathName}?${params.toString()}`);
   }, 300);
+
   return (
     <div className="relative">
       <label htmlFor="search-products" hidden>
