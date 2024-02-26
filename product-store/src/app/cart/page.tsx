@@ -5,7 +5,7 @@ import { useCart } from "../_providers/Cart";
 import CartItems from "../ui/cart/CartItems";
 import CartCheckOut from "../ui/cart/CartCheckout";
 
-export default function Cart() {
+export default function Page() {
   const { cart, clearCart, cartIsEmpty, totalPrice } = useCart();
   return (
     <main className="h-[100vh] flex items-center flex-col">
