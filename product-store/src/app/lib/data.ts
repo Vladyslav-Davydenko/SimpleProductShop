@@ -35,7 +35,7 @@ export async function fetchLatestPerfumes(): Promise<CardType[]> {
       resolve("Wait 4s");
     }, 4000);
   });
-  noStore();
+  // noStore();
   try {
     const cards = await sql<CardType>`
         SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price, perfumes.description 
@@ -48,5 +48,24 @@ export async function fetchLatestPerfumes(): Promise<CardType[]> {
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch the latest invoices.");
+  }
+}
+
+export async function fetchPerfumesPages(query: string) {
+  noStore();
+  try {
+    const count = await sql`SELECT COUNT(*)
+    FROM perfumes
+    WHERE
+    perfumes.title ILIKE ${`%${query}%`} OR
+    perfumes.description ILIKE ${`%${query}%`} OR
+    perfumes.price::text ILIKE ${`%${query}%`}
+  `;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch total number of invoices.");
   }
 }
