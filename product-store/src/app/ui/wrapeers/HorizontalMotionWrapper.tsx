@@ -1,7 +1,7 @@
-import { fetchPefumes } from "@/app/lib/data";
+import { fetchLatestPerfumes } from "@/app/lib/data";
 import HorizontalMotion from "../motions/HorizontalMotion";
 
 export default async function HorizontalMotionWrapper() {
-  const cards = await fetchPefumes();
+  const cards = await fetchLatestPerfumes();
   return <HorizontalMotion cards={cards} />;
 }

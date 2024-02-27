@@ -6,7 +6,7 @@ import PriceButton from "../button/PriceButton";
 
 // Loading animation
 const shimmer =
-  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-gray-900/60 before:to-transparent";
+  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-gray-700/60 before:to-transparent  bg-gray-900";
 
 export const CardSquareSceleton = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -48,6 +48,40 @@ export const SquareCardSceleton = () => {
           </div>
           <div className=" flex items-end justify-end w-[30%]"></div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const ProductsGridSceleton = () => {
+  return (
+    <div className=" w-full h-[200dvh] grid grid-cols-3 place-items-center gap-8">
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
+      </div>
+      <div className="relative h-[450px] w-[300px] overflow-hidden">
+        <div className={`${shimmer} absolute inset-0`} />
       </div>
     </div>
   );
