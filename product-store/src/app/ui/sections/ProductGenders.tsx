@@ -21,7 +21,7 @@ export default function ProductGenders() {
           </p>
         </div>
         <VerticalCard
-          url="/perfumes/womans-perfume.jpg"
+          url="/perfumes/womans-perfume-min.jpg"
           title="Blue De Chanel"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
               culpa"
@@ -29,7 +29,7 @@ export default function ProductGenders() {
       </div>
       <div className="flex gap-8 w-[70%] justify-center items-center">
         <VerticalCard
-          url="/perfumes/mans-perfume.jpg"
+          url="/perfumes/mans-perfume-min.jpg"
           title="Blue De Chanel"
           description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis a
               culpa"
