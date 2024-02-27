@@ -40,7 +40,7 @@ export async function fetchLatestPerfumes(): Promise<CardType[]> {
         SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price, perfumes.description 
         FROM perfumes
         ORDER BY perfumes.date DESC
-        LIMIT 8
+        LIMIT 7
         `;
 
     return cards.rows;
