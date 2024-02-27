@@ -8,7 +8,7 @@ export async function fetchFilteredPerfumes(
   query: string,
   currentPage: number
 ): Promise<CardType[]> {
-  // noStore();
+  noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
     const perfumes = await sql<CardType>`
@@ -35,6 +35,7 @@ export async function fetchLatestPerfumes(): Promise<CardType[]> {
       resolve("Wait 4s");
     }, 4000);
   });
+  noStore();
   try {
     const cards = await sql<CardType>`
         SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price, perfumes.description 
