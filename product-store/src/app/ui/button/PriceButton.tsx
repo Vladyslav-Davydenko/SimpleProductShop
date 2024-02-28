@@ -14,7 +14,7 @@ export default function PriceButton({
 }: PriceButtonProps) {
   return (
     <button
-      className="opacity-80 hover:opacity-100 transition-all duration-300 bg-blue-400 rounded-full px-3 py-1 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
+      className="opacity-80 hover:opacity-100 transition-all duration-300 bg-blue-500 rounded-full px-3 py-1 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
       disabled={isDisabled}
       onClick={onClick}
     >

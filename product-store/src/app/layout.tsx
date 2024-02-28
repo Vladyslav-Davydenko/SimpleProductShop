@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import NavBar from "@/app/ui/navigation/NavBar";
 import Footer from "./ui/footer/Footer";
 
+import "rc-slider/assets/index.css";
 import "./globals.css";
 import { Providers } from "./_providers";
 
@@ -19,7 +20,7 @@ type LayoutProps = Readonly<{
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en" className="scroll-smooth min-h-screen">
+    <html lang="en" className="scroll-smooth min-h-screen text-white bg-black">
       <body className={inter.className}>
         <Providers>
           <NavBar />

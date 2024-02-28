@@ -22,7 +22,7 @@ export default function Greetings() {
         dolorem aperiam. Aperiam, suscipit vero commodi porro cupiditate nihil!
       </p>
       <button
-        className=" opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-400 rounded-full px-6 py-2 text-white text-center"
+        className=" opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full px-6 py-2 text-white text-center"
         onClick={handleGoShooping}
       >
         Go Shopping

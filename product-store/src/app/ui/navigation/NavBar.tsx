@@ -18,7 +18,7 @@ export default function NavBar() {
   const pathName = usePathname();
 
   const cartClasses = clsx({
-    "hover:opacity-100 transition-opacity duration-300 bg-blue-400 rounded-full px-6 py-2 text-white":
+    "hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full px-6 py-2 text-white":
       true,
     "opacity-80": "/cart" !== pathName,
     "opacity-100": "/cart" === pathName,

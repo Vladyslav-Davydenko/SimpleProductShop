@@ -37,6 +37,35 @@ html {
   );
 }
 
+.rc-slider-track {
+  background-color: rgb(59 130 246);
+  height: 10px;
+}
+
+.rc-slider-rail {
+  height: 10px;
+}
+
+.rc-slider-handle {
+  border: 2px solid rgb(59 130 246);
+  background-color: white;
+  opacity: 100;
+  height: 18px;
+  width: 18px;
+}
+
+/* Hover effect for handler */
+.rc-slider-handle:hover {
+  border: 2px solid white;
+  background-color: rgb(59 130 246); /* Change color on hover */
+}
+
+/* Active (pressed) effect for handler */
+.rc-slider-handle:active {
+  border: 2px solid white;
+  background-color: rgb(59 130 246); /* Change color when pressed */
+}
+
 .backface-hidden {
   backface-visibility: hidden;
 }

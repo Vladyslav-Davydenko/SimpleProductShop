@@ -41,7 +41,7 @@ export default function HorizontalMotion({ cards }: HorizontalMotionProps) {
           <div className="flex justify-center items-center">
             <Link
               href={"/products"}
-              className="flex gap-2 justify-center items-center opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-400 rounded-full pl-6 pr-5 py-2 text-white text-center"
+              className="flex gap-2 justify-center items-center opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full pl-6 pr-5 py-2 text-white text-center"
             >
               More
               <ArrowRightCircleIcon className="h-4 w-4" />
