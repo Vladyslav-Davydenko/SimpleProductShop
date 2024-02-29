@@ -26,7 +26,9 @@ export default function NavBar() {
   return (
     <nav className="flex justify-between items-center py-4 px-20 fixed right-0 left-0 top-0 backdrop-blur-md bg-black/50 z-20">
       <div>
-        <p className=" uppercase text-xl font-bold">ProductStore</p>
+        <Link href={"/"} className=" uppercase text-xl font-bold">
+          ProductStore
+        </Link>
       </div>
       <div className="flex gap-10 items-center">
         {links.map((link) => {
