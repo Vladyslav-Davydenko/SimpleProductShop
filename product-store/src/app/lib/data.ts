@@ -1,6 +1,3 @@
-// import { sql } from "@vercel/postgres";
-// import { CardType } from "../_types/Card";
-
 import { unstable_noStore as noStore } from "next/cache";
 
 import { PrismaClient } from "@prisma/client";
@@ -16,19 +13,6 @@ export async function fetchFilteredPerfumes(
   noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
-    // const perfumes = await sql<CardType>`
-    // SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price, perfumes.description
-    // FROM perfumes
-    // WHERE
-    // (perfumes.title ILIKE ${`%${query}%`} OR
-    // perfumes.description ILIKE ${`%${query}%`} OR
-    // perfumes.price::text ILIKE ${`%${query}%`})
-    // AND
-    // (perfumes.price BETWEEN ${minPrice} AND ${maxPrice})
-    // ORDER BY perfumes.date DESC
-    // LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
-    // `;
-
     const perfumes = await prisma.perfume.findMany({
       select: {
         id: true,
@@ -51,12 +35,7 @@ export async function fetchFilteredPerfumes(
       skip: offset,
     });
 
-    const formattedPerfumes = perfumes.map((perfume) => ({
-      ...perfume,
-      price: parseInt(perfume.price.toString()),
-    }));
-
-    return formattedPerfumes;
+    return perfumes;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch perfumes.");
@@ -79,23 +58,11 @@ export async function fetchLatestPerfumes() {
       },
       take: 7,
     });
-    // const cards = await sql<CardType>`
-    //     SELECT perfumes.id, perfumes.title, perfumes.url, perfumes.price, perfumes.description
-    //     FROM perfumes
-    //     ORDER BY perfumes.date DESC
-    //     LIMIT 7
-    //     `;
 
-    // Convert Decimal type to number or string
-    const formattedPerfumes = perfumes.map((perfume) => ({
-      ...perfume,
-      price: parseInt(perfume.price.toString()),
-    }));
-
-    return formattedPerfumes;
+    return perfumes;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch the latest invoices.");
+    throw new Error("Failed to fetch the latest perfumes.");
   }
 }
 
@@ -115,20 +82,11 @@ export async function fetchPerfumesPages(
         AND: [{ price: { gte: minPrice, lte: maxPrice } }],
       },
     });
-    //   const count = await sql`SELECT COUNT(*)
-    //   FROM perfumes
-    //   WHERE
-    //   (perfumes.title ILIKE ${`%${query}%`} OR
-    //   perfumes.description ILIKE ${`%${query}%`} OR
-    //   perfumes.price::text ILIKE ${`%${query}%`})
-    //   AND
-    //   (perfumes.price BETWEEN ${minPrice} AND ${maxPrice})
-    // `;
 
     const totalPages = Math.ceil(count / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch total number of invoices.");
+    throw new Error("Failed to fetch total number of perfumes.");
   }
 }

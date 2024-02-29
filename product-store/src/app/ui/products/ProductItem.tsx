@@ -31,6 +31,7 @@ export default function ProductItem({ product }: ProductItemProps) {
           src={product.url}
           alt={product.title}
           style={{ objectFit: "cover" }}
+          sizes="100%"
           fill
           className="absolute inset-0 z-0 transition-transform duration-500 group-hover:scale-105 backface-hidden"
         />

@@ -19,6 +19,7 @@ export default function VerticalCard({
       <Image
         src={url}
         alt={title}
+        sizes="100%"
         style={{ objectFit: "cover" }}
         priority={true}
         fill

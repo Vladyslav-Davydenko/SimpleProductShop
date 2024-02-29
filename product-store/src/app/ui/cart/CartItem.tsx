@@ -30,6 +30,7 @@ export default function CartItem({ cartItem }: CartItemProps) {
             src={product.url}
             alt={product.title}
             style={{ objectFit: "cover" }}
+            sizes="100%"
             fill
             className="absolute inset-0 z-0"
           />

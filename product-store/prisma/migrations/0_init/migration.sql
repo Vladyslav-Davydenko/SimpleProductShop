@@ -1,3 +1,6 @@
+-- ADD extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 -- CreateTable
 CREATE TABLE "Perfume" (
     "id" UUID NOT NULL DEFAULT uuid_generate_v4(),

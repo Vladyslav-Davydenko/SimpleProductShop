@@ -23,10 +23,6 @@ export default function Card({ card }: CardProps) {
     addItemToCart(newCartItem);
   };
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
   return (
     <div
       key={card.id}
@@ -35,6 +31,7 @@ export default function Card({ card }: CardProps) {
       <Image
         src={card.url}
         alt={card.title}
+        sizes="100%"
         style={{ objectFit: "cover" }}
         fill
         className="absolute inset-0 z-0 transition-transform duration-500 group-hover:scale-105 backface-hidden"

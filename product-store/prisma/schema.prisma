@@ -12,6 +12,6 @@ model Perfume {
   title       String   @db.VarChar(255)
   description String
   url         String   @unique
-  price       Decimal  @db.Decimal
+  price       Int
   date        DateTime @db.Date
 }
