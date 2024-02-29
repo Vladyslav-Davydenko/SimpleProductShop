@@ -3,12 +3,11 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Slider from "rc-slider";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function ProductFilters() {
   const [priceRange, setPriceRange] = useState<number[]>([0, 100]);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -21,11 +20,13 @@ export default function ProductFilters() {
     replace(`${pathname}?${params.toString()}`);
   }, 1000);
 
+  // prevent calling the function before first render
+  const isMounted = useRef(false);
   useEffect(() => {
-    if (isMounted) {
+    if (isMounted.current) {
       updateUrlParams();
     } else {
-      setIsMounted(true);
+      isMounted.current = true;
     }
   }, [priceRange, updateUrlParams]);
 
