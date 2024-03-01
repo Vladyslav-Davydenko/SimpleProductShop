@@ -10,7 +10,10 @@ datasource db {
 model Perfume {
   id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   title       String   @db.VarChar(255)
-  description String
+  brand       String?   @db.VarChar(255)
+  gender      String   @db.VarChar(255) @default("U")
+  rating      Int?      
+  description String?
   url         String   @unique
   price       Int
   date        DateTime @db.Date

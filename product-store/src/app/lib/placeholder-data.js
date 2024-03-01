@@ -2,6 +2,9 @@ export const perfumes = [
   {
     url: "/perfumes/alfred-guzman-v6Rj0WB6F0I-unsplash-min.jpg",
     title: "L'Homme",
+    brand: "L'Homme",
+    gender: "M",
+    rating: 89,
     price: 200,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -11,6 +14,9 @@ export const perfumes = [
   {
     url: "/perfumes/jeroen-den-otter-2b0JeJTEclQ-unsplash-min.jpg",
     title: "Bleu de chanel",
+    brand: "Bleu de chanel",
+    gender: "M",
+    rating: 96,
     price: 400,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -20,6 +26,9 @@ export const perfumes = [
   {
     url: "/perfumes/laura-chouette-4sKdeIMiFEI-unsplash-min.jpg",
     title: "Coco",
+    brand: "Coco",
+    gender: "F",
+    rating: 68,
     price: 500,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -29,6 +38,9 @@ export const perfumes = [
   {
     url: "/perfumes/marisa-garrido-3aql6Y9LKFo-unsplash-min.jpg",
     title: "Miss Dior",
+    brand: "Miss Dior",
+    gender: "F",
+    rating: 87,
     price: 900,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -38,6 +50,9 @@ export const perfumes = [
   {
     url: "/perfumes/laura-chouette-gbT2KAq1V5c-unsplash-min.jpg",
     title: "Versace",
+    brand: "Versace",
+    gender: "F",
+    rating: 95,
     price: 800,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -47,6 +62,9 @@ export const perfumes = [
   {
     url: "/perfumes/vishal-banik-OhBmysUAjio-unsplash-min.jpg",
     title: "Jaguar",
+    brand: "Jaguar",
+    gender: "M",
+    rating: 100,
     price: 100,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -56,6 +74,9 @@ export const perfumes = [
   {
     url: "/perfumes/parth-natani-uqJdOfHGb-w-unsplash-min.jpg",
     title: "Park Avenue",
+    brand: "Park Avenue",
+    gender: "U",
+    rating: 80,
     price: 300,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -65,6 +86,9 @@ export const perfumes = [
   {
     url: "/perfumes/ali-bakhtiari-7ic3yF64FS8-unsplash-min.jpg",
     title: "Red Diamond",
+    brand: "Red Diamond",
+    gender: "M",
+    rating: 99,
     price: 1700,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -74,6 +98,9 @@ export const perfumes = [
   {
     url: "/perfumes/filip-baotic-tgqnnQfq6C8-unsplash-min.jpg",
     title: "Stronger with you",
+    brand: "Stronger with you",
+    gender: "U",
+    rating: 53,
     price: 100,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -83,6 +110,9 @@ export const perfumes = [
   {
     url: "/perfumes/gift-habeshaw-C1qrJ9i4EPc-unsplash-min.jpg",
     title: "Creed",
+    brand: "Creed",
+    gender: "U",
+    rating: 77,
     price: 450,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -92,6 +122,9 @@ export const perfumes = [
   {
     url: "/perfumes/maxim-lozyanko-GxSiLG3UuUw-unsplash-min.jpg",
     title: "Goldea",
+    brand: "Goldea",
+    gender: "U",
+    rating: 69,
     price: 770,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -101,6 +134,9 @@ export const perfumes = [
   {
     url: "/perfumes/sagar-sawant-civayXc2m9c-unsplash-min.jpg",
     title: "Ck be",
+    brand: "Ck be",
+    gender: "U",
+    rating: 87,
     price: 430,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
@@ -110,6 +146,9 @@ export const perfumes = [
   {
     url: "/perfumes/taisiia-shestopal-t0HhXmX1kqU-unsplash-min.jpg",
     title: "Allure",
+    brand: "Allure",
+    gender: "F",
+    rating: 82,
     price: 512,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aculpa",
