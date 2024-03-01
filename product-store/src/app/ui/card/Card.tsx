@@ -6,7 +6,6 @@ import PriceButton from "@/app/ui/button/PriceButton";
 
 import { useCart } from "@/app/_providers/Cart";
 import { CartItem } from "@/app/_types/Cart";
-import { useEffect, useState } from "react";
 
 interface CardProps {
   card: CardType;

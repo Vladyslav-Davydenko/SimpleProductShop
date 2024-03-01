@@ -2,6 +2,7 @@ export type CardType = {
   url: string;
   title: string;
   price: number;
-  description: string;
+  description: string | null;
+  brand: string | null;
   id: string;
 };

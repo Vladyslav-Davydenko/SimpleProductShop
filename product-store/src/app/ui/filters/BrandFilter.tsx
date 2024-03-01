@@ -36,7 +36,7 @@ export default function BrandFilter() {
 
   useEffect(() => {
     updateUrlParams();
-  }, [brands]);
+  }, [brands, updateUrlParams]);
 
   return (
     <div className="py-8 border-t-2 border-white">

@@ -42,7 +42,7 @@ export default function ProductItem({ product }: ProductItemProps) {
             {product.title}
           </p>
           <p className="text-sm text-gray-400">
-            {product.description.substring(0, 50)}
+            {product?.description?.substring(0, 50) || ""}
           </p>
         </div>
         <div className="w-[20%] flex justify-end items-end h-full">

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function PriceRangeFilter() {
-  const [priceRange, setPriceRange] = useState<number[]>([0, 100]);
+  const [priceRange, setPriceRange] = useState<number[]>([0, 2000]);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();

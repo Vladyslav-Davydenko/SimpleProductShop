@@ -57,6 +57,7 @@ export async function fetchLatestPerfumes() {
         id: true,
         title: true,
         url: true,
+        brand: true,
         price: true,
         description: true,
       },
