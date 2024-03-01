@@ -19,6 +19,7 @@ interface Props {
     page?: string;
     minPrice?: string;
     maxPrice?: string;
+    brands?: string;
   };
 }
 
@@ -27,6 +28,18 @@ export default async function Page({ searchParams }: Props) {
   const page = Number(searchParams?.page) || 1;
   const minPrice = Number(searchParams?.minPrice) || 0;
   const maxPrice = Number(searchParams?.maxPrice) || 2000;
+  const brands = searchParams?.brands?.split(",") || [
+    "Stronger with you",
+    "Creed",
+    "Goldea",
+    "Ck be",
+    "Allure",
+    "Red Diamond",
+    "Park Avenue",
+    "Jaguar",
+    "Versace",
+    "Coco",
+  ];
 
   const totalPages = await fetchPerfumesPages(query, minPrice, maxPrice);
   return (
@@ -45,6 +58,7 @@ export default async function Page({ searchParams }: Props) {
               page={page}
               minPrice={minPrice}
               maxPrice={maxPrice}
+              brands={brands}
             />
           </Suspense>
           <Suspense>

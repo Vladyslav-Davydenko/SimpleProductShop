@@ -8,8 +8,8 @@ export default function ProductFilters() {
         Filters
       </p>
       <div className="w-full ">
-        <PriceRangeFilter />
         <BrandFilter />
+        <PriceRangeFilter />
       </div>
     </div>
   );
