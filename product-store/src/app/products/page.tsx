@@ -5,6 +5,7 @@ import Search from "../ui/search/Search";
 import ProductsGrid from "../ui/products/ProductsGrid";
 import Pagination from "../ui/navigation/Pagination";
 import ProductFilters from "../ui/products/ProductFilters";
+import ProductSearchUnderBar from "../ui/products/ProductSearchUnderBar";
 
 import { ProductsGridSceleton } from "../ui/sceletons/sceletons";
 import { fetchPerfumesPages } from "../lib/data";
@@ -54,6 +55,7 @@ export default async function Page({ searchParams }: Props) {
               <Search />
             </Suspense>
           </div>
+          <ProductSearchUnderBar />
           <Suspense fallback={<ProductsGridSceleton />}>
             <ProductsGrid
               query={query}

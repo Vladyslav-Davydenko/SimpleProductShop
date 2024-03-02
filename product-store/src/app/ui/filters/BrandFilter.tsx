@@ -26,6 +26,7 @@ export const brandsFilter = [
 export default function BrandFilter() {
   const [brands, setBrands] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -70,9 +71,9 @@ export default function BrandFilter() {
               type="checkbox"
               id={`${brand}-input`}
               onChange={() => {
-                if (brands.includes(brand))
+                if (brands.includes(brand)) {
                   setBrands(brands.filter((b) => b !== brand));
-                else setBrands([...brands, brand]);
+                } else setBrands([...brands, brand]);
               }}
             />
             <label htmlFor={`${brand}-input`} className="hover:cursor-pointer">

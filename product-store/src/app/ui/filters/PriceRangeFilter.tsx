@@ -11,14 +11,18 @@ import { ChevronUpIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
 export default function PriceRangeFilter() {
-  const [priceRange, setPriceRange] = useState<number[]>([0, 2000]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+  const defaultValues = [
+    Number(params.get("minPrice")) || 0,
+    Number(params.get("maxPrice")) || 2000,
+  ];
+  const [priceRange, setPriceRange] = useState(defaultValues);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const updateUrlParams = useDebouncedCallback(() => {
-    const params = new URLSearchParams(searchParams);
     params.set("page", "1");
     params.set("minPrice", priceRange[0].toString());
     params.set("maxPrice", priceRange[1].toString());
@@ -34,6 +38,11 @@ export default function PriceRangeFilter() {
       isMounted.current = true;
     }
   }, [priceRange, updateUrlParams]);
+
+  // useEffect(() => {
+  //   if (!params.has("minPrice")) setPriceRange([0, priceRange[1]]);
+  //   if (!params.has("maxPrice")) setPriceRange([priceRange[0], 2000]);
+  // }, [params]);
 
   const handleSliderChange = (value: number | number[]) => {
     if (typeof value === "number") {
