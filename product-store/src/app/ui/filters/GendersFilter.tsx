@@ -6,10 +6,15 @@ import { useDebouncedCallback } from "use-debounce";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { ChevronUpIcon } from "@heroicons/react/24/outline";
+
+import clsx from "clsx";
+
 export const gendersFilter = ["M", "F", "U"];
 
 export default function GendersFilter() {
   const [genders, setGenders] = useState<string[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -25,11 +30,28 @@ export default function GendersFilter() {
   useEffect(() => {
     updateUrlParams();
   }, [genders, updateUrlParams]);
+
+  const divClasses = clsx({
+    "py-8 border-t-2 border-white transition-all duration-300": true,
+    "h-[20rem]": isOpen,
+    "h-[5.5rem] overflow-hidden": !isOpen,
+  });
+
+  const iconClasses = clsx({
+    "h-6 w-6 transition-all duration-300": true,
+    "rotate-180": isOpen,
+    "rotate-0": !isOpen,
+  });
+
   return (
-    <div className="py-8 border-t-2 border-white">
-      <p className="uppercase font-semibold text-sm opacity-80 mb-10">
-        Genders
-      </p>
+    <div className={divClasses}>
+      <div
+        className="flex justify-between items-center mb-10"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <p className="uppercase font-semibold text-sm opacity-80">Genders</p>
+        <ChevronUpIcon className={iconClasses} />
+      </div>
       {gendersFilter.map((gender) => {
         return (
           <div key={gender} className="flex gap-2 p-2 hover:cursor-pointer ">

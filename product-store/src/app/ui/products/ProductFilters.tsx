@@ -8,7 +8,7 @@ export default function ProductFilters() {
       <p className="uppercase font-semibold text-md opacity-80 mb-10">
         Filters
       </p>
-      <div className="w-full ">
+      <div className="w-full">
         <BrandFilter />
         <GendersFilter />
         <PriceRangeFilter />

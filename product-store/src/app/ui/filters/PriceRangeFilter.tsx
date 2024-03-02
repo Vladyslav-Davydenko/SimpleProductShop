@@ -6,8 +6,13 @@ import Slider from "rc-slider";
 import { useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
+import { ChevronUpIcon } from "@heroicons/react/24/outline";
+
+import clsx from "clsx";
+
 export default function PriceRangeFilter() {
   const [priceRange, setPriceRange] = useState<number[]>([0, 2000]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -37,11 +42,30 @@ export default function PriceRangeFilter() {
       setPriceRange(value);
     }
   };
+
+  const divClasses = clsx({
+    "py-8 border-y-2 border-white transition-all duration-300": true,
+    "h-[20rem]": isOpen,
+    "h-[5.5rem] overflow-hidden": !isOpen,
+  });
+
+  const iconClasses = clsx({
+    "h-6 w-6 transition-all duration-300": true,
+    "rotate-180": isOpen,
+    "rotate-0": !isOpen,
+  });
+
   return (
-    <div className="py-8 border-t-2 border-white">
-      <p className="uppercase font-semibold text-sm opacity-80 mb-10">
-        Price Range
-      </p>
+    <div className={divClasses}>
+      <div
+        className="flex justify-between items-center mb-10"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <p className="uppercase font-semibold text-sm opacity-80">
+          Price Range
+        </p>
+        <ChevronUpIcon className={iconClasses} />
+      </div>
       <div className="py-4 flex justify-between">
         <p>$ {priceRange[0]}</p>
         <p>$ {priceRange[1]}</p>

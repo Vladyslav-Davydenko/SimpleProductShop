@@ -12,7 +12,7 @@ export async function fetchFilteredPerfumes(
   brands: string[],
   genders: string[]
 ) {
-  noStore();
+  // noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
     const perfumes = await prisma.perfume.findMany({
@@ -52,7 +52,7 @@ export async function fetchFilteredPerfumes(
 }
 
 export async function fetchLatestPerfumes() {
-  noStore();
+  // noStore();
   try {
     const perfumes = await prisma.perfume.findMany({
       select: {

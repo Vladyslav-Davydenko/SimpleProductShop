@@ -6,6 +6,10 @@ import { useDebouncedCallback } from "use-debounce";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { ChevronUpIcon } from "@heroicons/react/24/outline";
+
+import clsx from "clsx";
+
 export const brandsFilter = [
   "Stronger with you",
   "Creed",
@@ -21,6 +25,7 @@ export const brandsFilter = [
 
 export default function BrandFilter() {
   const [brands, setBrands] = useState<string[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -37,12 +42,30 @@ export default function BrandFilter() {
     updateUrlParams();
   }, [brands, updateUrlParams]);
 
+  const divClasses = clsx({
+    "py-8 border-t-2 border-white transition-all duration-300": true,
+    "h-[34rem]": isOpen,
+    "h-[5.5rem] overflow-hidden": !isOpen,
+  });
+
+  const iconClasses = clsx({
+    "h-6 w-6 transition-all duration-300": true,
+    "rotate-180": isOpen,
+    "rotate-0": !isOpen,
+  });
+
   return (
-    <div className="py-8 border-t-2 border-white">
-      <p className="uppercase font-semibold text-sm opacity-80 mb-10">Brands</p>
+    <div className={divClasses}>
+      <div
+        className="flex justify-between items-center mb-10"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <p className="uppercase font-semibold text-sm opacity-80">Brands</p>
+        <ChevronUpIcon className={iconClasses} />
+      </div>
       {brandsFilter.map((brand) => {
         return (
-          <div key={brand} className="flex gap-2 p-2 hover:cursor-pointer ">
+          <div key={brand} className="flex gap-2 py-2 hover:cursor-pointer ">
             <input
               type="checkbox"
               id={`${brand}-input`}
