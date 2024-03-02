@@ -20,6 +20,7 @@ interface Props {
     minPrice?: string;
     maxPrice?: string;
     brands?: string;
+    genders?: string;
   };
 }
 
@@ -40,6 +41,7 @@ export default async function Page({ searchParams }: Props) {
     "Versace",
     "Coco",
   ];
+  const genders = searchParams?.genders?.split(",") || ["M", "F", "U"];
 
   const totalPages = await fetchPerfumesPages(query, minPrice, maxPrice);
   return (
@@ -59,6 +61,7 @@ export default async function Page({ searchParams }: Props) {
               minPrice={minPrice}
               maxPrice={maxPrice}
               brands={brands}
+              genders={genders}
             />
           </Suspense>
           <Suspense>

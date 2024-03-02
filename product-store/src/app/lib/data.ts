@@ -9,7 +9,8 @@ export async function fetchFilteredPerfumes(
   currentPage: number,
   minPrice: number,
   maxPrice: number,
-  brands: string[]
+  brands: string[],
+  genders: string[]
 ) {
   noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -20,8 +21,8 @@ export async function fetchFilteredPerfumes(
         title: true,
         url: true,
         brand: true,
-        // gender: perfume.gender,
-        // rating: perfume.rating,
+        gender: true,
+        // rating: true,
         price: true,
         description: true,
       },
@@ -33,6 +34,7 @@ export async function fetchFilteredPerfumes(
         AND: [
           { price: { gte: minPrice, lte: maxPrice } },
           { brand: { in: brands, mode: "insensitive" } },
+          { gender: { in: genders, mode: "insensitive" } },
         ],
       },
       orderBy: {
@@ -58,6 +60,7 @@ export async function fetchLatestPerfumes() {
         title: true,
         url: true,
         brand: true,
+        gender: true,
         price: true,
         description: true,
       },

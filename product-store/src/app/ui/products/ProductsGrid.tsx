@@ -8,6 +8,7 @@ interface PoductsGridProps {
   minPrice: number;
   maxPrice: number;
   brands: string[];
+  genders: string[];
 }
 
 export default async function ProductsGrid({
@@ -16,13 +17,15 @@ export default async function ProductsGrid({
   minPrice,
   maxPrice,
   brands,
+  genders,
 }: PoductsGridProps) {
   const perfumes = await fetchFilteredPerfumes(
     query,
     page,
     minPrice,
     maxPrice,
-    brands
+    brands,
+    genders
   );
   return (
     <div className=" w-full grid grid-cols-3 place-items-center gap-8">

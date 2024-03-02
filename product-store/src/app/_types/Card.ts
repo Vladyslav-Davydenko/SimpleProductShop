@@ -4,5 +4,6 @@ export type CardType = {
   price: number;
   description: string | null;
   brand: string | null;
+  gender: string;
   id: string;
 };

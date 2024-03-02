@@ -1,5 +1,6 @@
 import PriceRangeFilter from "../filters/PriceRangeFilter";
 import BrandFilter from "../filters/BrandFilter";
+import GendersFilter from "../filters/GendersFilter";
 
 export default function ProductFilters() {
   return (
@@ -9,6 +10,7 @@ export default function ProductFilters() {
       </p>
       <div className="w-full ">
         <BrandFilter />
+        <GendersFilter />
         <PriceRangeFilter />
       </div>
     </div>

@@ -28,7 +28,6 @@ export default function BrandFilter() {
   const updateUrlParams = useDebouncedCallback(() => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
-    console.log(brands);
     if (brands && brands[0]) params.set("brands", brands.join(","));
     else params.delete("brands");
     replace(`${pathname}?${params.toString()}`);
