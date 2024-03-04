@@ -29,9 +29,15 @@ export default async function ProductsGrid({
   );
   return (
     <div className=" w-full grid grid-cols-3 place-items-center gap-8">
-      {perfumes.map((perfume) => (
-        <ProductItem key={perfume.id + page} product={perfume} />
-      ))}
+      {perfumes.length > 0 ? (
+        perfumes.map((perfume) => (
+          <ProductItem key={perfume.id + page} product={perfume} />
+        ))
+      ) : (
+        <div className="flex items-center justify-center text-md opacity-80 col-span-3">
+          <p>Nothing here</p>
+        </div>
+      )}
     </div>
   );
 }

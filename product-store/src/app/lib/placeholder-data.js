@@ -1,4 +1,4 @@
-export const perfumes = [
+const perfumes = [
   {
     url: "/perfumes/alfred-guzman-v6Rj0WB6F0I-unsplash-min.jpg",
     title: "L'Homme",
@@ -157,6 +157,23 @@ export const perfumes = [
   },
 ];
 
+const defaultBrands = [
+  "Stronger with you",
+  "Creed",
+  "Goldea",
+  "Ck be",
+  "Allure",
+  "Red Diamond",
+  "Park Avenue",
+  "Jaguar",
+  "Versace",
+  "Coco",
+];
+
+const defaultGenders = ["M", "F", "U"];
+
 module.exports = {
   perfumes,
+  defaultBrands,
+  defaultGenders,
 };

@@ -1,6 +1,9 @@
 import { unstable_noStore as noStore } from "next/cache";
 
 import { PrismaClient } from "@prisma/client";
+
+import { defaultBrands, defaultGenders } from "./placeholder-data";
+
 const prisma = new PrismaClient();
 
 const ITEMS_PER_PAGE = 9;
@@ -14,6 +17,9 @@ export async function fetchFilteredPerfumes(
 ) {
   // noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  const filteredBrands = brands.length > 0 ? brands : defaultBrands;
+  const filteredGenders = genders.length > 0 ? genders : defaultGenders;
+
   try {
     const perfumes = await prisma.perfume.findMany({
       select: {
@@ -33,8 +39,8 @@ export async function fetchFilteredPerfumes(
         ],
         AND: [
           { price: { gte: minPrice, lte: maxPrice } },
-          { brand: { in: brands, mode: "insensitive" } },
-          { gender: { in: genders, mode: "insensitive" } },
+          { brand: { in: filteredBrands, mode: "insensitive" } },
+          { gender: { in: filteredGenders, mode: "insensitive" } },
         ],
       },
       orderBy: {
@@ -85,6 +91,9 @@ export async function fetchPerfumesPages(
   genders: string[]
 ) {
   // noStore();
+  const filteredBrands = brands.length > 0 ? brands : defaultBrands;
+  const filteredGenders = genders.length > 0 ? genders : defaultGenders;
+
   try {
     const count = await prisma.perfume.count({
       where: {
@@ -94,8 +103,8 @@ export async function fetchPerfumesPages(
         ],
         AND: [
           { price: { gte: minPrice, lte: maxPrice } },
-          { brand: { in: brands, mode: "insensitive" } },
-          { gender: { in: genders, mode: "insensitive" } },
+          { brand: { in: filteredBrands, mode: "insensitive" } },
+          { gender: { in: filteredGenders, mode: "insensitive" } },
         ],
       },
     });

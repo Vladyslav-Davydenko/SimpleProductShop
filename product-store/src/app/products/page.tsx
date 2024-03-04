@@ -30,21 +30,8 @@ export default async function Page({ searchParams }: Props) {
   const page = Number(searchParams?.page) || 1;
   const minPrice = Number(searchParams?.minPrice) || 0;
   const maxPrice = Number(searchParams?.maxPrice) || 2000;
-  const brands = searchParams?.brands?.split(",") || [
-    "Stronger with you",
-    "Creed",
-    "Goldea",
-    "Ck be",
-    "Allure",
-    "Red Diamond",
-    "Park Avenue",
-    "Jaguar",
-    "Versace",
-    "Coco",
-  ];
-  const filteredBrands = searchParams?.brands?.split(",") || [];
-  const genders = searchParams?.genders?.split(",") || ["M", "F", "U"];
-  const gendersFilter = searchParams?.genders?.split(",") || [];
+  const brands = searchParams?.brands?.split(",") || [];
+  const genders = searchParams?.genders?.split(",") || [];
 
   const totalPages = await fetchPerfumesPages(
     query,
@@ -57,8 +44,8 @@ export default async function Page({ searchParams }: Props) {
     <main className="flex flex-col min-h-[100vh] w-full items-center justify-center">
       <div className="p-20 h-full w-full flex gap-6 justify-center items-start">
         <ProductFilters
-          genders={gendersFilter}
-          brands={filteredBrands}
+          genders={genders}
+          brands={brands}
           minPrice={minPrice}
           maxPrice={maxPrice}
         />
