@@ -10,17 +10,22 @@ import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
 import clsx from "clsx";
 
-export default function PriceRangeFilter() {
+interface Props {
+  minPrice: number;
+  maxPrice: number;
+}
+
+export default function PriceRangeFilter({ minPrice, maxPrice }: Props) {
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
-  const defaultValues = [
-    Number(params.get("minPrice")) || 0,
-    Number(params.get("maxPrice")) || 2000,
-  ];
-  const [priceRange, setPriceRange] = useState(defaultValues);
+  const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const { replace } = useRouter();
+
+  useEffect(() => {
+    setPriceRange([minPrice, maxPrice]);
+  }, [minPrice, maxPrice]);
 
   const updateUrlParams = useDebouncedCallback(() => {
     params.set("page", "1");

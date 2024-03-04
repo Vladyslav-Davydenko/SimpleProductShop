@@ -56,7 +56,12 @@ export default async function Page({ searchParams }: Props) {
   return (
     <main className="flex flex-col min-h-[100vh] w-full items-center justify-center">
       <div className="p-20 h-full w-full flex gap-6 justify-center items-start">
-        <ProductFilters genders={gendersFilter} brands={filteredBrands} />
+        <ProductFilters
+          genders={gendersFilter}
+          brands={filteredBrands}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+        />
         <div className="w-[80%] flex flex-col gap-6 items-center justify-center h-full">
           <div className=" flex justify-start px-6">
             <Suspense>

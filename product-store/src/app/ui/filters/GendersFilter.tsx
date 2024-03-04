@@ -3,11 +3,12 @@
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
 import clsx from "clsx";
+import { useDebouncedCallback } from "use-debounce";
 
 export const gendersFilter = ["M", "F", "U"];
 
@@ -17,29 +18,34 @@ interface Props {
 
 export default function GendersFilter({ genders }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [filteredGenders, setFilteredGenders] = useState(genders);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const updateUrlParams = (value: string) => {
+  useEffect(() => {
+    updateUrlParams();
+  }, [filteredGenders]);
+
+  useEffect(() => {
+    setFilteredGenders(genders);
+  }, [genders]);
+
+  const updateUrlParams = useDebouncedCallback(() => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
-    const genders = params.get("genders")?.split(",") || [];
-    if (genders.includes(value)) {
-      console.log();
-      const updatedValue = genders.filter((gender) => gender !== value);
-      if (updatedValue.length > 0)
-        params.set("genders", updatedValue.join(","));
-      else params.delete("genders");
+    if (filteredGenders && filteredGenders[0]) {
+      params.set("genders", filteredGenders.join(","));
     } else {
-      const updatedValue = [...genders, value];
-      params.set("genders", updatedValue.join(","));
+      params.delete("genders");
     }
     replace(`${pathname}?${params.toString()}`);
-  };
+  }, 500);
 
   const handleToggleCheckBox = (value: string) => {
-    updateUrlParams(value);
+    if (filteredGenders.includes(value))
+      setFilteredGenders(filteredGenders.filter((gender) => gender !== value));
+    else setFilteredGenders([...filteredGenders, value]);
   };
 
   const divClasses = clsx({
@@ -69,7 +75,7 @@ export default function GendersFilter({ genders }: Props) {
             <input
               type="checkbox"
               id={`${gender}-input`}
-              checked={genders.includes(gender)}
+              checked={filteredGenders.includes(gender)}
               onChange={() => {
                 handleToggleCheckBox(gender);
               }}

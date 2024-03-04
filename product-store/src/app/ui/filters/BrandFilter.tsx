@@ -29,29 +29,34 @@ interface Props {
 
 export default function BrandFilter({ brands }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const [filteredBrands, setFilteredBrands] = useState(brands);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const updateUrlParams = (value: string) => {
+  const updateUrlParams = useDebouncedCallback(() => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
-    const brands = params.get("brands")?.split(",") || [];
-    if (brands.includes(value)) {
-      console.log();
-      const updatedValue = brands.filter((brand) => brand !== value);
-      if (updatedValue.length > 0) params.set("brands", updatedValue.join(","));
-      else params.delete("brands");
+    if (filteredBrands && filteredBrands[0]) {
+      params.set("brands", filteredBrands.join(","));
     } else {
-      const updatedValue = [...brands, value];
-      params.set("brands", updatedValue.join(","));
+      params.delete("brands");
     }
     replace(`${pathname}?${params.toString()}`);
-  };
+  }, 500);
+
+  useEffect(() => {
+    updateUrlParams();
+  }, [filteredBrands]);
+
+  useEffect(() => {
+    setFilteredBrands(brands);
+  }, [brands]);
 
   const handleToggleCheckBox = (value: string) => {
-    updateUrlParams(value);
+    if (filteredBrands.includes(value))
+      setFilteredBrands(filteredBrands.filter((brand) => brand !== value));
+    else setFilteredBrands([...filteredBrands, value]);
   };
 
   const divClasses = clsx({
@@ -81,7 +86,7 @@ export default function BrandFilter({ brands }: Props) {
             <input
               type="checkbox"
               id={`${brand}-input`}
-              checked={brands.includes(brand)}
+              checked={filteredBrands.includes(brand)}
               onChange={() => {
                 handleToggleCheckBox(brand);
               }}
