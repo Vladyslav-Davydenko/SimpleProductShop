@@ -22,11 +22,13 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   return (
     <>
       <div className="inline-flex">
-        <PaginationArrow
-          direction="left"
-          href={createPageURL(currentPage - 1)}
-          isDisabled={currentPage <= 1}
-        />
+        {allPages.length > 0 && (
+          <PaginationArrow
+            direction="left"
+            href={createPageURL(currentPage - 1)}
+            isDisabled={currentPage <= 1}
+          />
+        )}
 
         <div className="flex -space-x-px">
           {allPages.map((page, index) => {
@@ -48,12 +50,13 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             );
           })}
         </div>
-
-        <PaginationArrow
-          direction="right"
-          href={createPageURL(currentPage + 1)}
-          isDisabled={currentPage >= totalPages}
-        />
+        {allPages.length > 0 && (
+          <PaginationArrow
+            direction="right"
+            href={createPageURL(currentPage + 1)}
+            isDisabled={currentPage >= totalPages}
+          />
+        )}
       </div>
     </>
   );

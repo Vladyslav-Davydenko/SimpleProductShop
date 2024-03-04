@@ -23,25 +23,36 @@ export const brandsFilter = [
   "Coco",
 ];
 
-export default function BrandFilter() {
-  const [brands, setBrands] = useState<string[]>([]);
+interface Props {
+  brands: string[];
+}
+
+export default function BrandFilter({ brands }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const updateUrlParams = useDebouncedCallback(() => {
+  const updateUrlParams = (value: string) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
-    if (brands && brands[0]) params.set("brands", brands.join(","));
-    else params.delete("brands");
+    const brands = params.get("brands")?.split(",") || [];
+    if (brands.includes(value)) {
+      console.log();
+      const updatedValue = brands.filter((brand) => brand !== value);
+      if (updatedValue.length > 0) params.set("brands", updatedValue.join(","));
+      else params.delete("brands");
+    } else {
+      const updatedValue = [...brands, value];
+      params.set("brands", updatedValue.join(","));
+    }
     replace(`${pathname}?${params.toString()}`);
-  }, 500);
+  };
 
-  useEffect(() => {
-    updateUrlParams();
-  }, [brands, updateUrlParams]);
+  const handleToggleCheckBox = (value: string) => {
+    updateUrlParams(value);
+  };
 
   const divClasses = clsx({
     "py-8 border-t-2 border-white transition-all duration-300": true,
@@ -70,10 +81,9 @@ export default function BrandFilter() {
             <input
               type="checkbox"
               id={`${brand}-input`}
+              checked={brands.includes(brand)}
               onChange={() => {
-                if (brands.includes(brand)) {
-                  setBrands(brands.filter((b) => b !== brand));
-                } else setBrands([...brands, brand]);
+                handleToggleCheckBox(brand);
               }}
             />
             <label htmlFor={`${brand}-input`} className="hover:cursor-pointer">

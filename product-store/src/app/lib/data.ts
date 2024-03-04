@@ -80,9 +80,11 @@ export async function fetchLatestPerfumes() {
 export async function fetchPerfumesPages(
   query: string,
   minPrice: number,
-  maxPrice: number
+  maxPrice: number,
+  brands: string[],
+  genders: string[]
 ) {
-  noStore();
+  // noStore();
   try {
     const count = await prisma.perfume.count({
       where: {
@@ -90,7 +92,11 @@ export async function fetchPerfumesPages(
           { title: { contains: query, mode: "insensitive" } },
           { description: { contains: query, mode: "insensitive" } },
         ],
-        AND: [{ price: { gte: minPrice, lte: maxPrice } }],
+        AND: [
+          { price: { gte: minPrice, lte: maxPrice } },
+          { brand: { in: brands, mode: "insensitive" } },
+          { gender: { in: genders, mode: "insensitive" } },
+        ],
       },
     });
 

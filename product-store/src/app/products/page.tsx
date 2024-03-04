@@ -42,13 +42,21 @@ export default async function Page({ searchParams }: Props) {
     "Versace",
     "Coco",
   ];
+  const filteredBrands = searchParams?.brands?.split(",") || [];
   const genders = searchParams?.genders?.split(",") || ["M", "F", "U"];
+  const gendersFilter = searchParams?.genders?.split(",") || [];
 
-  const totalPages = await fetchPerfumesPages(query, minPrice, maxPrice);
+  const totalPages = await fetchPerfumesPages(
+    query,
+    minPrice,
+    maxPrice,
+    brands,
+    genders
+  );
   return (
     <main className="flex flex-col min-h-[100vh] w-full items-center justify-center">
       <div className="p-20 h-full w-full flex gap-6 justify-center items-start">
-        <ProductFilters />
+        <ProductFilters genders={gendersFilter} brands={filteredBrands} />
         <div className="w-[80%] flex flex-col gap-6 items-center justify-center h-full">
           <div className=" flex justify-start px-6">
             <Suspense>
