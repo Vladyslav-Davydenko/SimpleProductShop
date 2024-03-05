@@ -11,6 +11,7 @@ interface PoductsGridProps {
   brands: string[];
   genders: string[];
   sortedBy: keyof CardType;
+  sortingOrder: "asc" | "desc";
 }
 
 export default async function ProductsGrid({
@@ -21,6 +22,7 @@ export default async function ProductsGrid({
   brands,
   genders,
   sortedBy,
+  sortingOrder,
 }: PoductsGridProps) {
   const perfumes = await fetchFilteredPerfumes(
     query,
@@ -29,7 +31,8 @@ export default async function ProductsGrid({
     maxPrice,
     brands,
     genders,
-    sortedBy
+    sortedBy,
+    sortingOrder
   );
   return (
     <div className=" w-full grid grid-cols-3 place-items-center gap-8">

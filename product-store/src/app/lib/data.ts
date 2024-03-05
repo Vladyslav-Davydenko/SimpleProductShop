@@ -15,7 +15,8 @@ export async function fetchFilteredPerfumes(
   maxPrice: number,
   brands: string[],
   genders: string[],
-  sortedBy: keyof CardType = "id"
+  sortedBy: keyof CardType = "date",
+  sortingOrder: "asc" | "desc"
 ) {
   // noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -47,7 +48,7 @@ export async function fetchFilteredPerfumes(
         ],
       },
       orderBy: {
-        [sortedBy]: "desc",
+        [sortedBy]: sortingOrder,
       },
       take: ITEMS_PER_PAGE,
       skip: offset,

@@ -5,13 +5,54 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowsUpDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CardType } from "@/app/_types/Card";
 
-const sortingOptions: (keyof CardType)[] = ["title", "price", "date"];
+interface SortingOptions {
+  name: keyof CardType;
+  nameUI: string;
+  order: "asc" | "desc";
+}
+
+const sortingOptions: SortingOptions[] = [
+  {
+    name: "title",
+    nameUI: "title: A-Z",
+    order: "asc",
+  },
+  {
+    name: "title",
+    nameUI: "title: Z-A",
+    order: "desc",
+  },
+  {
+    name: "price",
+    nameUI: "price: lowest-highest",
+    order: "asc",
+  },
+  {
+    name: "price",
+    nameUI: "price: highest-lowest",
+    order: "desc",
+  },
+  {
+    name: "date",
+    nameUI: "date: oldest-newest",
+    order: "asc",
+  },
+  {
+    name: "date",
+    nameUI: "date: newest-oldest",
+    order: "desc",
+  },
+];
 
 interface Props {
   sortedBy: keyof CardType;
+  sortingOrder: "asc" | "desc";
 }
 
-export default function ProductSearchUnderBar({ sortedBy }: Props) {
+export default function ProductSearchUnderBar({
+  sortedBy,
+  sortingOrder,
+}: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [sortChosen, setSortChosen] = useState(sortedBy);
   const pathname = usePathname();
@@ -19,7 +60,6 @@ export default function ProductSearchUnderBar({ sortedBy }: Props) {
 
   useEffect(() => {
     setSortChosen(sortedBy);
-    console.log(sortChosen);
   }, [sortedBy]);
 
   // Process of extracting required filters and filtering them (looks awful)
@@ -28,7 +68,8 @@ export default function ProductSearchUnderBar({ sortedBy }: Props) {
   const filters = Array.from(params.keys());
   const filteredParams = filters.filter((param) => {
     if (param === "page") return;
-    if (param === "sortedBy") return;
+    if (param === "sorted-by") return;
+    if (param === "sorting-order") return;
     if (param === "minPrice" && params.get("minPrice") === "0") return;
     if (param === "maxPrice" && params.get("maxPrice") === "2000") return;
     return param;
@@ -41,11 +82,13 @@ export default function ProductSearchUnderBar({ sortedBy }: Props) {
     replace(`${pathname}?${params.toString()}`);
   };
 
-  const handleChangeSort = (sort: keyof CardType) => {
+  const handleChangeSort = (sort: SortingOptions) => {
     if (sort) {
-      params.set("sortedBy", sort);
+      params.set("sorted-by", sort.name);
+      params.set("sorting-order", sort.order);
     } else {
-      params.delete("sortedBy");
+      params.delete("sorted-by");
+      params.delete("sorting-order");
     }
     replace(`${pathname}?${params.toString()}`);
   };
@@ -76,30 +119,28 @@ export default function ProductSearchUnderBar({ sortedBy }: Props) {
         >
           <ArrowsUpDownIcon className="h-6 w-6" />
         </button>
-        <div
-          className={`absolute left-0 bottom-0 w-36 backdrop-blur-md bg-black/50 z-20 translate-y-full -translate-x-[75%] overflow-hidden transition-all duration-300 ${
-            isOpen ? "h-36" : "h-0"
+        <ul
+          className={`absolute left-0 bottom-0 w-[12rem] p-4 pt-0 rounded-md backdrop-blur-md bg-black/70 z-20 translate-y-full -translate-x-[75%] overflow-hidden transition-all duration-300 ${
+            isOpen ? "h-[24rem]" : "h-0"
           }`}
         >
-          <ul>
-            {sortingOptions.map((sortingOption) => {
-              return (
-                <li
-                  key={`sorting-${sortingOption}`}
-                  className={`border-b-2 border-white ${
-                    sortingOption === sortChosen ? "opacity-100" : "opacity-70"
-                  } text-sm uppercase p-2 hover:opacity-100 transition-opacity cursor-pointer`}
-                  onClick={() => {
-                    handleChangeSort(sortingOption);
-                    setIsOpen(false);
-                  }}
-                >
-                  {sortingOption}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+          {sortingOptions.map((sortingOption) => {
+            return (
+              <li
+                key={`sorting-${sortingOption}`}
+                className={`border-b-2 border-white ${
+                  sortingOption.name === sortChosen &&
+                  sortingOption.order === sortingOrder
+                    ? "opacity-100"
+                    : "opacity-70"
+                } text-sm first-letter:uppercase px-2 py-4 hover:opacity-100 transition-opacity cursor-pointer`}
+                onClick={() => handleChangeSort(sortingOption)}
+              >
+                {sortingOption.nameUI}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

@@ -23,7 +23,8 @@ interface Props {
     maxPrice?: string;
     brands?: string;
     genders?: string;
-    sortedBy?: string;
+    "sorted-by"?: string;
+    "sorting-order": "asc" | "desc";
   };
 }
 
@@ -34,7 +35,8 @@ export default async function Page({ searchParams }: Props) {
   const maxPrice = Number(searchParams?.maxPrice) || 2000;
   const brands = searchParams?.brands?.split(",") || [];
   const genders = searchParams?.genders?.split(",") || [];
-  const sortedBy = (searchParams?.sortedBy || "id") as keyof CardType;
+  const sortedBy = (searchParams?.["sorted-by"] || "id") as keyof CardType;
+  const sortingOrder = searchParams?.["sorting-order"] || "asc";
 
   const totalPages = await fetchPerfumesPages(
     query,
@@ -58,7 +60,10 @@ export default async function Page({ searchParams }: Props) {
               <Search />
             </Suspense>
           </div>
-          <ProductSearchUnderBar sortedBy={sortedBy} />
+          <ProductSearchUnderBar
+            sortedBy={sortedBy}
+            sortingOrder={sortingOrder}
+          />
           <Suspense fallback={<ProductsGridSceleton />}>
             <ProductsGrid
               query={query}
@@ -68,6 +73,7 @@ export default async function Page({ searchParams }: Props) {
               brands={brands}
               genders={genders}
               sortedBy={sortedBy}
+              sortingOrder={sortingOrder}
             />
           </Suspense>
           <Suspense>
