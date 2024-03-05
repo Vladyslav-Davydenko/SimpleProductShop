@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import { PrismaClient } from "@prisma/client";
 
 import { defaultBrands, defaultGenders } from "./placeholder-data";
+import { CardType } from "../_types/Card";
 
 const prisma = new PrismaClient();
 
@@ -13,7 +14,8 @@ export async function fetchFilteredPerfumes(
   minPrice: number,
   maxPrice: number,
   brands: string[],
-  genders: string[]
+  genders: string[],
+  sortedBy: keyof CardType = "id"
 ) {
   // noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -31,6 +33,7 @@ export async function fetchFilteredPerfumes(
         // rating: true,
         price: true,
         description: true,
+        date: true,
       },
       where: {
         OR: [
@@ -44,7 +47,7 @@ export async function fetchFilteredPerfumes(
         ],
       },
       orderBy: {
-        date: "desc",
+        [sortedBy]: "desc",
       },
       take: ITEMS_PER_PAGE,
       skip: offset,
@@ -69,6 +72,7 @@ export async function fetchLatestPerfumes() {
         gender: true,
         price: true,
         description: true,
+        date: true,
       },
       orderBy: {
         date: "desc",

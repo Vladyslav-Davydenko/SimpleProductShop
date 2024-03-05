@@ -9,6 +9,7 @@ import ProductSearchUnderBar from "../ui/products/ProductSearchUnderBar";
 
 import { ProductsGridSceleton } from "../ui/sceletons/sceletons";
 import { fetchPerfumesPages } from "../lib/data";
+import { CardType } from "../_types/Card";
 
 export const metadata: Metadata = {
   title: "Perfumes",
@@ -22,6 +23,7 @@ interface Props {
     maxPrice?: string;
     brands?: string;
     genders?: string;
+    sortedBy?: string;
   };
 }
 
@@ -32,6 +34,7 @@ export default async function Page({ searchParams }: Props) {
   const maxPrice = Number(searchParams?.maxPrice) || 2000;
   const brands = searchParams?.brands?.split(",") || [];
   const genders = searchParams?.genders?.split(",") || [];
+  const sortedBy = (searchParams?.sortedBy || "id") as keyof CardType;
 
   const totalPages = await fetchPerfumesPages(
     query,
@@ -55,7 +58,7 @@ export default async function Page({ searchParams }: Props) {
               <Search />
             </Suspense>
           </div>
-          <ProductSearchUnderBar />
+          <ProductSearchUnderBar sortedBy={sortedBy} />
           <Suspense fallback={<ProductsGridSceleton />}>
             <ProductsGrid
               query={query}
@@ -64,6 +67,7 @@ export default async function Page({ searchParams }: Props) {
               maxPrice={maxPrice}
               brands={brands}
               genders={genders}
+              sortedBy={sortedBy}
             />
           </Suspense>
           <Suspense>

@@ -6,4 +6,5 @@ export type CardType = {
   brand: string | null;
   gender: string;
   id: string;
+  date: Date;
 };
