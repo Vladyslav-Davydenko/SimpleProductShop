@@ -120,14 +120,14 @@ export default function ProductSearchUnderBar({
           <ArrowsUpDownIcon className="h-6 w-6" />
         </button>
         <ul
-          className={`absolute left-0 bottom-0 w-[12rem] p-4 pt-0 rounded-md backdrop-blur-md bg-black/70 z-20 translate-y-full -translate-x-[75%] overflow-hidden transition-all duration-300 ${
+          className={`absolute left-0 bottom-0 w-[12rem] p-4 pt-0 rounded-md backdrop-blur-md bg-black/70 z-10 translate-y-full -translate-x-[75%] overflow-hidden transition-all duration-300 ${
             isOpen ? "h-[24rem]" : "h-0"
           }`}
         >
           {sortingOptions.map((sortingOption) => {
             return (
               <li
-                key={`sorting-${sortingOption}`}
+                key={`sorting-${sortingOption.nameUI}`}
                 className={`border-b-2 border-white ${
                   sortingOption.name === sortChosen &&
                   sortingOption.order === sortingOrder
