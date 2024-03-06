@@ -1,7 +1,7 @@
 import { fetchFilteredPerfumes } from "@/app/lib/data";
 
 import ProductItem from "./ProductItem";
-import { CardType } from "@/app/_types/Card";
+import { type CardType } from "@/app/_types/Card";
 
 interface PoductsGridProps {
   query: string;

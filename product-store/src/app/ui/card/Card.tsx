@@ -1,11 +1,11 @@
 "use client";
 
-import { CardType } from "@/app/_types/Card";
+import { type CardType } from "@/app/_types/Card";
+import { type CartItem } from "@/app/_types/Cart";
 import Image from "next/image";
 import PriceButton from "@/app/ui/button/PriceButton";
 
 import { useCart } from "@/app/_providers/Cart";
-import { CartItem } from "@/app/_types/Cart";
 
 interface CardProps {
   card: CardType;

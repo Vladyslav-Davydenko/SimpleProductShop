@@ -8,7 +8,7 @@ import { CardSquareSceleton } from "../sceletons/sceletons";
 import Link from "next/link";
 
 import Card from "../card/Card";
-import { CardType } from "@/app/_types/Card";
+import { type CardType } from "@/app/_types/Card";
 
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 

@@ -3,46 +3,10 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowsUpDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { CardType } from "@/app/_types/Card";
+import { type CardType } from "@/app/_types/Card";
 
-interface SortingOptions {
-  name: keyof CardType;
-  nameUI: string;
-  order: "asc" | "desc";
-}
-
-const sortingOptions: SortingOptions[] = [
-  {
-    name: "title",
-    nameUI: "title: A-Z",
-    order: "asc",
-  },
-  {
-    name: "title",
-    nameUI: "title: Z-A",
-    order: "desc",
-  },
-  {
-    name: "price",
-    nameUI: "price: lowest-highest",
-    order: "asc",
-  },
-  {
-    name: "price",
-    nameUI: "price: highest-lowest",
-    order: "desc",
-  },
-  {
-    name: "date",
-    nameUI: "date: oldest-newest",
-    order: "asc",
-  },
-  {
-    name: "date",
-    nameUI: "date: newest-oldest",
-    order: "desc",
-  },
-];
+import { sortingOptions } from "@/app/lib/placeholder-data";
+import { type SortingOptions } from "@/app/_types/Sorting";
 
 interface Props {
   sortedBy: keyof CardType;

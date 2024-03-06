@@ -1,4 +1,3 @@
-import { CardType } from "@/app/_types/Card";
 import { MouseEventHandler } from "react";
 
 interface PriceButtonProps {

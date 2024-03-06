@@ -1,6 +1,6 @@
 "use client";
 
-import { CartItem } from "@/app/_types/Cart";
+import { type CartItem } from "@/app/_types/Cart";
 
 import { TrashIcon } from "@heroicons/react/24/outline";
 

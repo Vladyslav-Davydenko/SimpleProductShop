@@ -1,5 +1,4 @@
-import { CartItem } from "@/app/_types/Cart";
-import { CardType } from "@/app/_types/Card";
+import { type CartItem } from "@/app/_types/Cart";
 
 export type CartType = {
   items: CartItem[];

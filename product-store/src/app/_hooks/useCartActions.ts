@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CartItem } from "../_types/Cart";
+import { type CartItem } from "../_types/Cart";
 import { useCart } from "../_providers/Cart";
 
 export default function useCartActions(cartItem: CartItem) {

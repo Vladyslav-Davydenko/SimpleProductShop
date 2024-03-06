@@ -9,7 +9,7 @@ import ProductSearchUnderBar from "../ui/products/ProductSearchUnderBar";
 
 import { ProductsGridSceleton } from "../ui/sceletons/sceletons";
 import { fetchPerfumesPages } from "../lib/data";
-import { CardType } from "../_types/Card";
+import { type CardType } from "../_types/Card";
 
 export const metadata: Metadata = {
   title: "Perfumes",

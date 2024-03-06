@@ -1,4 +1,6 @@
-const perfumes = [
+import { type SortingOptions } from "../_types/Sorting";
+
+export const perfumes = [
   {
     url: "/perfumes/alfred-guzman-v6Rj0WB6F0I-unsplash-min.jpg",
     title: "L'Homme",
@@ -157,7 +159,7 @@ const perfumes = [
   },
 ];
 
-const defaultBrands = [
+export const defaultBrands = [
   "Stronger with you",
   "Creed",
   "Goldea",
@@ -170,10 +172,37 @@ const defaultBrands = [
   "Coco",
 ];
 
-const defaultGenders = ["M", "F", "U"];
+export const defaultGenders = ["M", "F", "U"];
 
-module.exports = {
-  perfumes,
-  defaultBrands,
-  defaultGenders,
-};
+export const sortingOptions: SortingOptions[] = [
+  {
+    name: "title",
+    nameUI: "title: A-Z",
+    order: "asc",
+  },
+  {
+    name: "title",
+    nameUI: "title: Z-A",
+    order: "desc",
+  },
+  {
+    name: "price",
+    nameUI: "price: lowest-highest",
+    order: "asc",
+  },
+  {
+    name: "price",
+    nameUI: "price: highest-lowest",
+    order: "desc",
+  },
+  {
+    name: "date",
+    nameUI: "date: oldest-newest",
+    order: "asc",
+  },
+  {
+    name: "date",
+    nameUI: "date: newest-oldest",
+    order: "desc",
+  },
+];

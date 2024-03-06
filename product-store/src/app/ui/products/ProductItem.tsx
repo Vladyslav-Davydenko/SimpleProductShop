@@ -4,8 +4,8 @@ import Image from "next/image";
 
 import { useCart } from "@/app/_providers/Cart";
 
-import { CardType } from "@/app/_types/Card";
-import { CartItem } from "@/app/_types/Cart";
+import { type CardType } from "@/app/_types/Card";
+import { type CartItem } from "@/app/_types/Cart";
 
 import PriceButton from "../button/PriceButton";
 
