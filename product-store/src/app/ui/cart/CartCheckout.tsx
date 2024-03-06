@@ -1,5 +1,10 @@
+"use client";
+
 import { useState } from "react";
+import { useCart } from "@/app/_providers/Cart";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "axios";
 
 interface CartCheckOutProps {
   totalPrice: number;
@@ -11,16 +16,71 @@ export default function CartCheckOut({
   cartIsEmpty,
 }: CartCheckOutProps) {
   const [isAgreed, setIsAgreed] = useState<boolean>(false);
+  const [paymentError, setPaymentError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const { clearCart } = useCart();
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const cardElement = elements?.getElement("card");
+
+    try {
+      if (!stripe || !cardElement) {
+        setPaymentError("Something went erong");
+        return null;
+      }
+      const { data } = await axios.post("/api/create-payment-intent", {
+        data: { amount: totalPrice },
+      });
+      const clientSecret = data;
+
+      await stripe?.confirmCardPayment(clientSecret, {
+        payment_method: { card: cardElement },
+      });
+      setSuccess(true);
+      clearCart();
+    } catch (error) {
+      setPaymentError(error as string);
+    }
+  };
+
   return (
-    <div className="w-[30%] side-section h-full border-white border-l-2 flex justify-start items-center flex-col">
-      <div className="mt-20 pt-20 border-t-4 border-white">
+    <form
+      className="w-[30%] side-section h-full border-white border-l-2 flex justify-start items-center flex-col"
+      onSubmit={onSubmit}
+    >
+      <div className="mt-20 pt-20 border-t-4 border-white w-[80%]">
         <p className="uppercase text-md font-semibold tracking-wider">
           Cart total{" "}
           <span className="text-2xl tracking-widest pl-4">${totalPrice}</span>
         </p>
+        <div className="py-6">
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: "16px",
+                  color: "white",
+                  "::placeholder": {
+                    color: "#white",
+                  },
+                },
+                invalid: {
+                  color: "red",
+                },
+              },
+            }}
+          />
+        </div>
         <p className="mt-4 opacity-70 tracking-wider">
           shipping and taxes are included
         </p>
+        <p>{paymentError}</p>
+        {success ?? <p>Thank you for purchase</p>}
         <div className="mt-20">
           <label className="text-sm tracking-wider">
             <input
@@ -45,6 +105,6 @@ export default function CartCheckOut({
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }

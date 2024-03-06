@@ -5,6 +5,13 @@ import { useCart } from "../_providers/Cart";
 import CartItems from "../ui/cart/CartItems";
 import CartCheckOut from "../ui/cart/CartCheckout";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
+
 export default function Page() {
   const { cart, clearCart, cartIsEmpty, totalPrice } = useCart();
   return (
@@ -15,7 +22,9 @@ export default function Page() {
           clearCart={clearCart}
           cartIsEmpty={cartIsEmpty}
         />
-        <CartCheckOut cartIsEmpty={cartIsEmpty} totalPrice={totalPrice} />
+        <Elements stripe={stripePromise}>
+          <CartCheckOut cartIsEmpty={cartIsEmpty} totalPrice={totalPrice} />
+        </Elements>
       </div>
     </main>
   );

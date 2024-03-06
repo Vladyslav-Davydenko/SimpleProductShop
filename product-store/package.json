@@ -14,6 +14,9 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@prisma/client": "^5.10.2",
+    "@stripe/react-stripe-js": "^2.5.1",
+    "@stripe/stripe-js": "^3.0.7",
+    "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.4",
     "framer-motion": "^11.0.6",
@@ -22,6 +25,7 @@
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.33.2",
+    "stripe": "^14.19.0",
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {
