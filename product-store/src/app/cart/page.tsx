@@ -15,7 +15,7 @@ const stripePromise = loadStripe(
 export default function Page() {
   const { cart, clearCart, cartIsEmpty, totalPrice } = useCart();
   return (
-    <main className="h-[100vh] flex items-center flex-col">
+    <main className="h-[100vh] flex items-center flex-col border-b-2 border-white">
       <div className="flex h-[100%] gap-8 w-full mt-20">
         <CartItems
           cart={cart}
