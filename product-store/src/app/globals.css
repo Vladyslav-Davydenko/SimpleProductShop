@@ -38,7 +38,7 @@ html {
 }
 
 .rc-slider-track {
-  background-color: rgb(59 130 246);
+  background-color: rgb(59 130 246) !important;
   height: 10px;
 }
 
@@ -47,27 +47,38 @@ html {
 }
 
 .rc-slider-handle {
-  border: 2px solid rgb(59 130 246);
-  background-color: white;
-  opacity: 100;
+  border: 2px solid rgb(59 130 246) !important;
+  background-color: white !important;
+  opacity: 1 !important; /* Opacity value ranges from 0 to 1 */
   height: 18px;
   width: 18px;
 }
 
 /* Hover effect for handler */
 .rc-slider-handle:hover {
-  border: 2px solid white;
-  background-color: rgb(59 130 246); /* Change color on hover */
+  border: 2px solid white !important;
+  background-color: rgb(59 130 246) !important;
 }
 
 /* Active (pressed) effect for handler */
 .rc-slider-handle:active {
-  border: 2px solid white;
-  background-color: rgb(59 130 246); /* Change color when pressed */
+  border: 2px solid white !important;
+  background-color: rgb(59 130 246) !important;
 }
 
 .backface-hidden {
   backface-visibility: hidden;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s infinite linear;
+  -webkit-animation: spin 1s infinite linear; /* Safari and older browsers */
 }
 
 @layer utilities {

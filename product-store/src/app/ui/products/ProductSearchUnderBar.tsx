@@ -40,9 +40,7 @@ export default function ProductSearchUnderBar({
   });
 
   const handleClearFilter = (filter: string) => {
-    if (filter === "minPrice") params.set("minPrice", "0");
-    else if (filter === "maxPrice") params.set("maxPrice", "2000");
-    else params.delete(filter);
+    params.delete(filter);
     replace(`${pathname}?${params.toString()}`);
   };
 

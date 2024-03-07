@@ -45,13 +45,13 @@ export default function BrandFilter({ brands }: Props) {
     replace(`${pathname}?${params.toString()}`);
   }, 500);
 
-  useEffect(() => {
-    updateUrlParams();
-  }, [filteredBrands]);
+  // useEffect(() => {
+  //   updateUrlParams();
+  // }, [filteredBrands, updateUrlParams]);
 
-  useEffect(() => {
-    setFilteredBrands(brands);
-  }, [brands]);
+  // useEffect(() => {
+  //   setFilteredBrands(brands);
+  // }, [brands]);
 
   const handleToggleCheckBox = (value: string) => {
     if (filteredBrands.includes(value))

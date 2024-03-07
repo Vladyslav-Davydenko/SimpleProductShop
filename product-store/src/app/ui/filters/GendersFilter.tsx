@@ -23,14 +23,6 @@ export default function GendersFilter({ genders }: Props) {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  useEffect(() => {
-    updateUrlParams();
-  }, [filteredGenders]);
-
-  useEffect(() => {
-    setFilteredGenders(genders);
-  }, [genders]);
-
   const updateUrlParams = useDebouncedCallback(() => {
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
@@ -41,6 +33,14 @@ export default function GendersFilter({ genders }: Props) {
     }
     replace(`${pathname}?${params.toString()}`);
   }, 500);
+
+  useEffect(() => {
+    updateUrlParams();
+  }, [filteredGenders, updateUrlParams]);
+
+  useEffect(() => {
+    setFilteredGenders(genders);
+  }, [genders]);
 
   const handleToggleCheckBox = (value: string) => {
     if (filteredGenders.includes(value))

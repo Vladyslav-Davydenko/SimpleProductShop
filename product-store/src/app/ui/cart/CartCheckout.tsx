@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { useCart } from "@/app/_providers/Cart";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
+
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+
 import SucceedPayment from "../pop-up/SucceedPayment";
 
 interface CartCheckOutProps {
@@ -19,6 +22,7 @@ export default function CartCheckOut({
   const [isAgreed, setIsAgreed] = useState<boolean>(false);
   const [paymentError, setPaymentError] = useState("");
   const [isSucceed, setIsSucceed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -35,6 +39,7 @@ export default function CartCheckOut({
         setPaymentError("Something went erong");
         return null;
       }
+      setIsLoading(true);
       const { data } = await axios.post("/api/create-payment-intent", {
         data: { amount: totalPrice },
       });
@@ -51,6 +56,8 @@ export default function CartCheckOut({
       }
     } catch (error) {
       setPaymentError(error as string);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -107,10 +114,19 @@ export default function CartCheckOut({
           <div className="flex justify-center items-center mt-10">
             <button
               className="flex gap-4 justify-center items-center opacity-80 hover:opacity-100 transition-all duration-300 bg-blue-500 rounded-full px-6 py-3 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
-              disabled={!isAgreed || cartIsEmpty}
+              disabled={!isAgreed || cartIsEmpty || isLoading}
             >
-              Checkout
-              <ShoppingBagIcon className="h-6 w-6" />
+              {isLoading ? (
+                <>
+                  Processing
+                  <ArrowPathIcon className="h-6 w-6 animate-spin" />
+                </>
+              ) : (
+                <>
+                  Checkout
+                  <ShoppingBagIcon className="h-6 w-6" />
+                </>
+              )}
             </button>
           </div>
         </div>

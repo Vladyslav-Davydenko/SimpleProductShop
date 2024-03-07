@@ -29,8 +29,10 @@ export default function PriceRangeFilter({ minPrice, maxPrice }: Props) {
 
   const updateUrlParams = useDebouncedCallback(() => {
     params.set("page", "1");
-    params.set("minPrice", priceRange[0].toString());
-    params.set("maxPrice", priceRange[1].toString());
+    if (priceRange[0] === 0) params.delete("minPrice");
+    else params.set("minPrice", priceRange[0].toString());
+    if (priceRange[1] === 2000) params.delete("maxPrice");
+    else params.set("maxPrice", priceRange[1].toString());
     replace(`${pathname}?${params.toString()}`);
   }, 1000);
 
@@ -43,11 +45,6 @@ export default function PriceRangeFilter({ minPrice, maxPrice }: Props) {
       isMounted.current = true;
     }
   }, [priceRange, updateUrlParams]);
-
-  // useEffect(() => {
-  //   if (!params.has("minPrice")) setPriceRange([0, priceRange[1]]);
-  //   if (!params.has("maxPrice")) setPriceRange([priceRange[0], 2000]);
-  // }, [params]);
 
   const handleSliderChange = (value: number | number[]) => {
     if (typeof value === "number") {
