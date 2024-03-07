@@ -33,8 +33,8 @@ export default async function Page({ searchParams }: Props) {
   const page = Number(searchParams?.page) || 1;
   const minPrice = Number(searchParams?.minPrice) || 0;
   const maxPrice = Number(searchParams?.maxPrice) || 2000;
-  const brands = searchParams?.brands?.split(",") || [];
-  const genders = searchParams?.genders?.split(",") || [];
+  const brands = searchParams?.brands || "";
+  const genders = searchParams?.genders || "";
   const sortedBy = (searchParams?.["sorted-by"] || "id") as keyof CardType;
   const sortingOrder = searchParams?.["sorting-order"] || "asc";
 

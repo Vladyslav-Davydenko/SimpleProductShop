@@ -8,8 +8,8 @@ interface PoductsGridProps {
   page: number;
   minPrice: number;
   maxPrice: number;
-  brands: string[];
-  genders: string[];
+  brands: string;
+  genders: string;
   sortedBy: keyof CardType;
   sortingOrder: "asc" | "desc";
 }

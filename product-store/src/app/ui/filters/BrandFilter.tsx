@@ -24,12 +24,14 @@ export const brandsFilter = [
 ];
 
 interface Props {
-  brands: string[];
+  brands: string;
 }
 
 export default function BrandFilter({ brands }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [filteredBrands, setFilteredBrands] = useState(brands);
+  const [filteredBrands, setFilteredBrands] = useState(
+    brands.split(",")[0] ? brands.split(",") : []
+  );
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -45,13 +47,14 @@ export default function BrandFilter({ brands }: Props) {
     replace(`${pathname}?${params.toString()}`);
   }, 500);
 
-  // useEffect(() => {
-  //   updateUrlParams();
-  // }, [filteredBrands, updateUrlParams]);
+  useEffect(() => {
+    updateUrlParams();
+  }, [filteredBrands, updateUrlParams]);
 
-  // useEffect(() => {
-  //   setFilteredBrands(brands);
-  // }, [brands]);
+  useEffect(() => {
+    if (brands.split(",")[0]) setFilteredBrands(brands.split(","));
+    else setFilteredBrands([]);
+  }, [brands]);
 
   const handleToggleCheckBox = (value: string) => {
     if (filteredBrands.includes(value))

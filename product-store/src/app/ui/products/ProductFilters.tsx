@@ -6,8 +6,8 @@ import GendersFilter from "../filters/GendersFilter";
 import { useMemo } from "react";
 
 interface Props {
-  genders: string[];
-  brands: string[];
+  genders: string;
+  brands: string;
   minPrice: number;
   maxPrice: number;
 }

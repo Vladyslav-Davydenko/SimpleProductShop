@@ -13,12 +13,14 @@ import { useDebouncedCallback } from "use-debounce";
 export const gendersFilter = ["M", "F", "U"];
 
 interface Props {
-  genders: string[];
+  genders: string;
 }
 
 export default function GendersFilter({ genders }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [filteredGenders, setFilteredGenders] = useState(genders);
+  const [filteredGenders, setFilteredGenders] = useState(
+    genders.split(",")[0] ? genders.split(",") : []
+  );
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -39,7 +41,8 @@ export default function GendersFilter({ genders }: Props) {
   }, [filteredGenders, updateUrlParams]);
 
   useEffect(() => {
-    setFilteredGenders(genders);
+    if (genders.split(",")[0]) setFilteredGenders(genders.split(","));
+    else setFilteredGenders([]);
   }, [genders]);
 
   const handleToggleCheckBox = (value: string) => {

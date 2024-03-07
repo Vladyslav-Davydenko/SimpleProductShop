@@ -13,15 +13,19 @@ export async function fetchFilteredPerfumes(
   currentPage: number,
   minPrice: number,
   maxPrice: number,
-  brands: string[],
-  genders: string[],
+  brands: string,
+  genders: string,
   sortedBy: keyof CardType = "date",
   sortingOrder: "asc" | "desc"
 ) {
   // noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-  const filteredBrands = brands.length > 0 ? brands : defaultBrands;
-  const filteredGenders = genders.length > 0 ? genders : defaultGenders;
+  const filteredBrands = brands.split(",")[0]
+    ? brands.split(",")
+    : defaultBrands;
+  const filteredGenders = genders.split(",")[0]
+    ? genders.split(",")
+    : defaultGenders;
 
   try {
     const perfumes = await prisma.perfume.findMany({
@@ -92,12 +96,16 @@ export async function fetchPerfumesPages(
   query: string,
   minPrice: number,
   maxPrice: number,
-  brands: string[],
-  genders: string[]
+  brands: string,
+  genders: string
 ) {
   // noStore();
-  const filteredBrands = brands.length > 0 ? brands : defaultBrands;
-  const filteredGenders = genders.length > 0 ? genders : defaultGenders;
+  const filteredBrands = brands.split(",")[0]
+    ? brands.split(",")
+    : defaultBrands;
+  const filteredGenders = genders.split(",")[0]
+    ? genders.split(",")
+    : defaultGenders;
 
   try {
     const count = await prisma.perfume.count({
