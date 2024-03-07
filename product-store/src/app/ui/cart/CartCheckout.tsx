@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useCart } from "@/app/_providers/Cart";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import SucceedPayment from "../pop-up/SucceedPayment";
 
 interface CartCheckOutProps {
   totalPrice: number;
@@ -20,7 +19,6 @@ export default function CartCheckOut({
   const [isAgreed, setIsAgreed] = useState<boolean>(false);
   const [paymentError, setPaymentError] = useState("");
   const [isSucceed, setIsSucceed] = useState(false);
-  const { replace } = useRouter();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -56,35 +54,9 @@ export default function CartCheckOut({
     }
   };
 
-  const handleButtonBack = () => {
-    replace("/products");
-  };
-
   return (
     <>
-      {isSucceed && (
-        <div className=" fixed inset-0 bg-black/50 backdrop-blur-md z-30 flex justify-center items-center">
-          <div className="side-section bg-black p-6 rounded-md w-[40rem] flex flex-col justify-center items-center gap-10">
-            <CheckCircleIcon className=" h-24 w-24" />
-            <div className="flex flex-col justify-center items-center gap-6">
-              <p className="uppercase text-md font-semibold tracking-wider">
-                Thank you
-              </p>
-              <p className="text-sm opacity-70">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Molestias consequuntur perspiciatis laborum esse aut praesentium
-                laboriosam qui dolore labore quasi
-              </p>
-              <button
-                onClick={handleButtonBack}
-                className="opacity-80 hover:opacity-100 transition-all duration-300 bg-blue-500 rounded-full px-3 py-1 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
-              >
-                Go back
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {isSucceed && <SucceedPayment />}
       <form
         className="w-[30%] side-section h-full border-white border-l-2 flex justify-start items-center flex-col"
         onSubmit={onSubmit}
