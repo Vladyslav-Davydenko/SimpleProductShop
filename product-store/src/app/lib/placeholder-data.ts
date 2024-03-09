@@ -205,4 +205,14 @@ export const sortingOptions: SortingOptions[] = [
     nameUI: "date: newest-oldest",
     order: "desc",
   },
+  {
+    name: "rating",
+    nameUI: "rating: popular",
+    order: "desc",
+  },
+  {
+    name: "rating",
+    nameUI: "rating: unpopular",
+    order: "asc",
+  },
 ];

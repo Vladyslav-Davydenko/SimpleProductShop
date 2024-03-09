@@ -45,6 +45,7 @@ export default function ProductSearchUnderBar({
   };
 
   const handleChangeSort = (sort: SortingOptions) => {
+    params.set("page", "1");
     if (sort) {
       params.set("sorted-by", sort.name);
       params.set("sorting-order", sort.order);
@@ -83,7 +84,7 @@ export default function ProductSearchUnderBar({
         </button>
         <ul
           className={`absolute left-0 bottom-0 w-[12rem] p-4 pt-0 rounded-md backdrop-blur-md bg-black/70 z-10 translate-y-full -translate-x-[75%] overflow-hidden transition-all duration-300 ${
-            isOpen ? "h-[24rem]" : "h-0"
+            isOpen ? "h-[30rem]" : "h-0"
           }`}
         >
           {sortingOptions.map((sortingOption) => {

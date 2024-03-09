@@ -8,6 +8,7 @@ import { type CardType } from "@/app/_types/Card";
 import { type CartItem } from "@/app/_types/Cart";
 
 import PriceButton from "../button/PriceButton";
+import StarRating from "../rating/StartRating";
 
 interface ProductItemProps {
   product: CardType;
@@ -41,6 +42,7 @@ export default function ProductItem({ product }: ProductItemProps) {
           <p className="uppercase text-lg font-semibold tracking-wide">
             {product.title}
           </p>
+          <StarRating rating={product.rating || 0} name={product.title} />
           <p className="text-sm text-gray-400">
             {product?.description?.substring(0, 50) || ""}
           </p>
