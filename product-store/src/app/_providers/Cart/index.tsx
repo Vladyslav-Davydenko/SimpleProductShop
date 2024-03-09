@@ -13,6 +13,9 @@ import {
   useReducer,
   useState,
 } from "react";
+import { fetchPerfumeById } from "@/app/lib/data";
+
+const LOCAL_STORAGE_NAME = "simple-product-store-cart";
 
 export type CartContext = {
   cart: CartType;
@@ -80,6 +83,56 @@ export const CartProvider: FC<CartProviderProps> = (props) => {
       type: "CLEAR_CART",
     });
   }, []);
+
+  useEffect(() => {
+    const syncCartFromLocalStorage = async () => {
+      const localCart = localStorage.getItem(LOCAL_STORAGE_NAME);
+      const parsedCart: { items: { item: string; quantity: number }[] } =
+        JSON.parse(localCart || "{}");
+
+      if (parsedCart?.items && parsedCart?.items?.length > 0) {
+        const initialCart = await Promise.all(
+          parsedCart.items.map(async ({ item, quantity }) => {
+            const res = await fetchPerfumeById(item);
+            if (res)
+              return {
+                item: res,
+                quantity,
+              };
+          })
+        );
+        dispatchCart({
+          type: "SET_CART",
+          payload: {
+            items: initialCart as CartItem[],
+          },
+        });
+      } else {
+        dispatchCart({
+          type: "SET_CART",
+          payload: {
+            items: [],
+          },
+        });
+      }
+    };
+    syncCartFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    const flattenedCart = cart.items.map((item) => {
+      if (item.item) {
+        return {
+          item: item.item.id,
+          quantity: item.quantity,
+        };
+      }
+    });
+    localStorage.setItem(
+      LOCAL_STORAGE_NAME,
+      JSON.stringify({ items: flattenedCart })
+    );
+  }, [cart]);
 
   useEffect(() => {
     const newTotal = cart?.items?.reduce((acc, item) => {

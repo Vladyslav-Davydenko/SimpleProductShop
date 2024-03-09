@@ -93,6 +93,21 @@ export async function fetchLatestPerfumes() {
   }
 }
 
+export async function fetchPerfumeById(itemID: string) {
+  try {
+    console.log("IIII");
+    const perfume = await prisma.perfume.findUnique({
+      where: {
+        id: itemID,
+      },
+    });
+    if (perfume) return perfume;
+  } catch (error) {
+    console.log(`Unable to fetch the perfume: ${error}`);
+    throw new Error("Failed to fetch perfume");
+  }
+}
+
 export async function fetchPerfumesPages(
   query: string,
   minPrice: number,

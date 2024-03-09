@@ -32,7 +32,7 @@ export default function StarRating({ rating, name }: StartRatingProps) {
         .map((_, count) => {
           return (
             <svg
-              key={`${rating}-${name}-rating-empty-${5 - count}`}
+              key={`${rating}-${name}-rating-empty-${TOTAL_STARTS - count}`}
               className="w-4 h-4 text-gray-300 me-1 dark:text-gray-500"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
