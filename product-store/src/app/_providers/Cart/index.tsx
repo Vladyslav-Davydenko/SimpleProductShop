@@ -14,6 +14,7 @@ import {
   useState,
 } from "react";
 import { fetchPerfumeById } from "@/app/lib/data";
+import { usePathname } from "next/navigation";
 
 const LOCAL_STORAGE_NAME = "simple-product-store-cart";
 
@@ -41,6 +42,7 @@ const arrayHasItems = (array: CartItem[]) =>
 
 export const CartProvider: FC<CartProviderProps> = (props) => {
   const { children } = props;
+  const pathname = usePathname();
 
   const [cart, dispatchCart] = useReducer(cartReducer, {
     items: [],
@@ -93,18 +95,20 @@ export const CartProvider: FC<CartProviderProps> = (props) => {
       if (parsedCart?.items && parsedCart?.items?.length > 0) {
         const initialCart = await Promise.all(
           parsedCart.items.map(async ({ item, quantity }) => {
-            const res = await fetchPerfumeById(item);
-            if (res)
+            const res = await fetch(`/api/product/${item}`);
+            if (res.ok) {
+              const data = await res.json();
               return {
-                item: res,
+                item: data,
                 quantity,
               };
+            }
           })
         );
         dispatchCart({
           type: "SET_CART",
           payload: {
-            items: initialCart as CartItem[],
+            items: initialCart[0] ? (initialCart as CartItem[]) : [],
           },
         });
       } else {

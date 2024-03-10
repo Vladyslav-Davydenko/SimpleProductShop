@@ -95,7 +95,6 @@ export async function fetchLatestPerfumes() {
 
 export async function fetchPerfumeById(itemID: string) {
   try {
-    console.log("IIII");
     const perfume = await prisma.perfume.findUnique({
       where: {
         id: itemID,
