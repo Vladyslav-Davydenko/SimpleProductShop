@@ -1,8 +1,8 @@
 "use client";
 
 import { type CartItem } from "@/app/_types/Cart";
-import { CartType, cartReducer } from "./reducer";
 import { type CardType } from "@/app/_types/Card";
+import { CartType, cartReducer } from "./reducer";
 import {
   FC,
   ReactNode,
