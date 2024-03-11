@@ -42,7 +42,7 @@ export default function ProductGenders() {
           <p className="leading-relaxed text-center md:text-end tracking-wider order-1">
             Indulge in the art of perfumery with scents that define your
             identity. Our collection caters to diverse tastes and preferences,
-            ensuring that there's a perfect fragrance for every individual.
+            ensuring that there is a perfect fragrance for every individual.
             Discover the essence of self-expression through our carefully
             curated perfumes.
           </p>

@@ -22,7 +22,7 @@ export default function Footer() {
           <p className="uppercase font-bold text-md text-white">Useful Links</p>
           <p className="text-sm text-gray-300">
             Navigate through our website to find helpful resources, guides, and
-            information. Whether you're a new customer or a returning one, we
+            information. Whether you are a new customer or a returning one, we
             want to make your journey with us seamless and enjoyable.
           </p>
         </div>
