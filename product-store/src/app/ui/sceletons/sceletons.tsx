@@ -35,7 +35,7 @@ export const CardSquareSceleton = () => {
 export const SquareCardSceleton = () => {
   return (
     <div
-      className={` ${shimmer} group relative h-[450px] w-[450px] overflow-hidden group border-white border-2`}
+      className={` ${shimmer} group relative h-[350px] w-[350px] md:h-[450px] md:w-[450px] overflow-hidden group border-white border-2`}
     >
       <div className="absolute bottom-0 w-full h-[35%] bg-gradient-to-t from-black/100 to-black/50 p-8 text-white backdrop-blur-sm translate-y-48 group-hover:translate-y-0 transition-all group-hover:scale-105 duration-500">
         <div className="flex gap-3">

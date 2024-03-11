@@ -12,7 +12,7 @@ export default function Greetings() {
     }
   };
   return (
-    <div className=" min-h-full flex items-center justify-center flex-col gap-8 main-section min-w-full">
+    <div className=" container p-2 min-h-full flex items-center justify-center flex-col gap-8 main-section min-w-full">
       <h1 className=" text-4xl font-bold tracking-wide text-center">
         Welcome to Product store
       </h1>
