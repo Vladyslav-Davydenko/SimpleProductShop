@@ -3,7 +3,6 @@
 import PriceRangeFilter from "../filters/PriceRangeFilter";
 import BrandFilter from "../filters/BrandFilter";
 import GendersFilter from "../filters/GendersFilter";
-import { useMemo } from "react";
 
 interface Props {
   genders: string;

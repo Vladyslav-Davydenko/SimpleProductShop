@@ -2,7 +2,6 @@
 
 import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import PriceButton from "../button/PriceButton";
 
 // Loading animation
 const shimmer =

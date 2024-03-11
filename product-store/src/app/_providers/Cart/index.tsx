@@ -13,7 +13,7 @@ import {
   useReducer,
   useState,
 } from "react";
-import { fetchPerfumeById } from "@/app/lib/data";
+
 import { usePathname } from "next/navigation";
 
 const LOCAL_STORAGE_NAME = "simple-product-store-cart";

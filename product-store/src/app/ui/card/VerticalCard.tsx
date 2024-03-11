@@ -1,5 +1,4 @@
 import Image from "next/image";
-import PriceButton from "../button/PriceButton";
 
 interface VerticalCardProps {
   url: string;
