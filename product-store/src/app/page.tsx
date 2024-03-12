@@ -7,7 +7,7 @@ import Divider from "./ui/sections/Divider";
 
 export default function Home() {
   return (
-    <main className="h-[900vh] flex items-center flex-col scroll-smooth">
+    <main className="h-[400vh] md:h-[900vh] flex items-center flex-col scroll-smooth">
       <Greetings />
       <Divider />
       <ProductGenders />

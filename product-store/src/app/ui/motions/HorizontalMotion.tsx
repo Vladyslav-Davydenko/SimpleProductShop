@@ -25,30 +25,63 @@ export default function HorizontalMotion({ cards }: HorizontalMotionProps) {
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-60%"]);
 
   return (
-    <section
-      ref={targetRef}
-      className="relative h-[600vh] border-white border-t-2"
-    >
-      <div className="sticky top-0 flex h-screen w-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-8">
-          {cards.map((card) => {
-            return (
-              <Suspense key={card.id} fallback={<CardSquareSceleton />}>
-                <Card card={card} key={card.id} />{" "}
-              </Suspense>
-            );
-          })}
-          <div className="flex justify-center items-center">
-            <Link
-              href={"/products"}
-              className="flex gap-2 justify-center items-center opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full pl-6 pr-5 py-2 text-white text-center"
-            >
-              More
-              <ArrowRightCircleIcon className="h-4 w-4" />
-            </Link>
+    <>
+      <section
+        ref={targetRef}
+        className="relative h-[600vh] border-white border-t-2 hidden md:block"
+      >
+        <div className="sticky top-0 flex h-screen w-screen items-center overflow-hidden">
+          <motion.div style={{ x }} className="flex gap-8">
+            {cards.map((card) => {
+              return (
+                <Suspense key={card.id} fallback={<CardSquareSceleton />}>
+                  <Card card={card} key={card.id} />{" "}
+                </Suspense>
+              );
+            })}
+            <div className="flex justify-center items-center">
+              <Link
+                href={"/products"}
+                className="flex gap-2 justify-center items-center opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full pl-6 pr-5 py-2 text-white text-center"
+              >
+                More
+                <ArrowRightCircleIcon className="h-4 w-4" />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      <section className="relative block md:hidden">
+        <div className="top-0 flex h-screen w-screen items-center overflow-scroll">
+          <div className="flex gap-8 mx-10">
+            {cards.map((card) => {
+              return (
+                <Suspense key={card.id} fallback={<CardSquareSceleton />}>
+                  <Card card={card} key={card.id} />{" "}
+                </Suspense>
+              );
+            })}
+            <div className="flex justify-center items-center">
+              <Link
+                href={"/products"}
+                className="flex gap-2 justify-center items-center opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full pl-6 pr-5 py-2 text-white text-center"
+              >
+                More
+                <ArrowRightCircleIcon className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
-        </motion.div>
+        </div>
+      </section>
+      <div className="flex md:hidden justify-center items-center mt-10">
+        <Link
+          href={"/products"}
+          className="flex gap-2 justify-center items-center opacity-80 hover:opacity-100 transition-opacity duration-300 bg-blue-500 rounded-full pl-6 pr-5 py-2 text-white text-center"
+        >
+          More
+          <ArrowRightCircleIcon className="h-4 w-4" />
+        </Link>
       </div>
-    </section>
+    </>
   );
 }
