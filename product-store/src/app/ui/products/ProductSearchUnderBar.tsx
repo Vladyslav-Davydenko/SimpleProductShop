@@ -57,7 +57,7 @@ export default function ProductSearchUnderBar({
   };
 
   return (
-    <div className="flex justify-between items-center px-6 py-2 w-full">
+    <div className="flex justify-between items-center px-2 md:px-6 py-2 w-full">
       <div className="flex gap-2 items-center">
         <p>Filters: </p>
         <div className="flex gap-2 items-center">
@@ -77,7 +77,7 @@ export default function ProductSearchUnderBar({
       </div>
       <div className="relative">
         <button
-          className="flex gap-1 items-center opacity-80 hover:opacity-100 transition-all duration-300 rounded-full px-3 py-2 hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
+          className="flex gap-1 items-center opacity-80 hover:opacity-100 transition-all duration-300 rounded-full hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           <ArrowsUpDownIcon className="h-6 w-6" />

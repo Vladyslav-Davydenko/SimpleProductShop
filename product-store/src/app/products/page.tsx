@@ -46,8 +46,8 @@ export default async function Page({ searchParams }: Props) {
     genders
   );
   return (
-    <main className="flex flex-col min-h-[100vh] w-full items-center justify-center">
-      <div className="p-20 h-full w-full flex gap-6 justify-center items-start">
+    <main className="flex flex-col min-h-[100vh] w-full">
+      <div className="p-6 md:p-20 pt-20 h-full w-full gap-6 flex justify-center items-center md:items-start ">
         <ProductFilters
           genders={genders}
           brands={brands}

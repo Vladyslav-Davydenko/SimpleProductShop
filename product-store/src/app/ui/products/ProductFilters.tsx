@@ -18,7 +18,7 @@ export default function ProductFilters({
   maxPrice,
 }: Props) {
   return (
-    <div className="w-[20%] flex flex-col gap-6 items-start justify-center h-full">
+    <div className="w-[20%] hidden md:flex flex-col gap-6 items-start justify-center h-full">
       <p className="uppercase font-semibold text-md opacity-80 mb-10">
         Filters
       </p>

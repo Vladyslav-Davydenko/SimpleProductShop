@@ -35,7 +35,7 @@ export default async function ProductsGrid({
     sortingOrder
   );
   return (
-    <div className=" w-full grid grid-cols-3 place-items-center gap-8">
+    <div className=" w-full grid grid-cols-1 md:grid-cols-3 place-items-center gap-8">
       {perfumes.length > 0 ? (
         perfumes.map((perfume) => (
           <ProductItem key={perfume.id + page} product={perfume} />
