@@ -7,17 +7,16 @@ export default function ProductGenders() {
       id="product-content"
     >
       <div className="h-[10%] flex items-center justify-center">
-        <p className="text-4xl font-bold tracking-wide text-center mb-10 px-10">
+        <p className="text-4xl font-bold tracking-wide text-center my-10 px-10">
           Perfumes for everyone
         </p>
       </div>
-      <div className="container grid grid-cols-1 md:grid-cols-3 w-[80%] gap-8 place-content-center">
+      <div className="container grid grid-cols-1 md:grid-cols-3 h-full w-[80%] gap-8 place-content-center">
         <div className="md:col-span-2 flex items-center justify-center order-2 md:order-1">
           <p className="leading-relaxed text-center md:text-start tracking-wider">
             Explore a collection of premium perfumes designed for everyone. Our
             scents are crafted with precision, offering a unique blend of
-            fragrance notes that captivate the senses. Immerse yourself in the
-            world of exquisite perfumery, where luxury meets individuality.
+            fragrance notes that captivate the senses.
           </p>
         </div>
         <div className="order-1 md:order-2">
@@ -29,7 +28,7 @@ export default function ProductGenders() {
           />
         </div>
       </div>
-      <div className="container grid grid-cols-1 md:grid-cols-3 w-[80%] gap-8 place-content-center">
+      <div className="container grid grid-cols-1 md:grid-cols-3 h-full w-[80%] gap-8 place-content-center">
         <div>
           <VerticalCard
             url="/perfumes/mans-perfume-min.jpg"
@@ -43,8 +42,6 @@ export default function ProductGenders() {
             Indulge in the art of perfumery with scents that define your
             identity. Our collection caters to diverse tastes and preferences,
             ensuring that there is a perfect fragrance for every individual.
-            Discover the essence of self-expression through our carefully
-            curated perfumes.
           </p>
         </div>
       </div>

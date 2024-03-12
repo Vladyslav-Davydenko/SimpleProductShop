@@ -18,7 +18,7 @@ export default function Footer() {
             classics, we have something for everyone.
           </p>
         </div>
-        <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+        <div className="col-span-2 md:col-span-1 hidden md:flex flex-col gap-4 ">
           <p className="uppercase font-bold text-md text-white">Useful Links</p>
           <p className="text-sm text-gray-300">
             Navigate through our website to find helpful resources, guides, and
@@ -26,7 +26,7 @@ export default function Footer() {
             want to make your journey with us seamless and enjoyable.
           </p>
         </div>
-        <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+        <div className="col-span-2 md:col-span-1 hidden md:flex flex-col gap-4">
           <p className="uppercase font-bold text-md text-white">Contacts</p>
           <p className="text-sm text-gray-300">
             Have questions or feedback? Reach out to our dedicated support team.

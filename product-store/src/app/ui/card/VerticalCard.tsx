@@ -13,7 +13,7 @@ export default function VerticalCard({
 }: VerticalCardProps) {
   return (
     <div
-      className={`group relative h-[450px] w-[100%] overflow-hidden bg-neutral-200 group border-white border-2`}
+      className={`group relative h-[350px]  md:h-[450px] w-[100%] overflow-hidden bg-neutral-200 group border-white border-2`}
     >
       <Image
         src={url}
