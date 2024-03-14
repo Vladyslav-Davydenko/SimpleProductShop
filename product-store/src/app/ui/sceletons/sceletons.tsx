@@ -54,7 +54,7 @@ export const SquareCardSceleton = () => {
 
 export const ProductsGridSceleton = () => {
   return (
-    <div className=" w-full h-[200dvh] grid grid-cols-3 place-items-center gap-8">
+    <div className=" w-full h-[200dvh] grid grid-cols-1 md:grid-cols-3 place-items-center gap-8">
       <div className="relative h-[450px] w-[300px] overflow-hidden">
         <div className={`${shimmer} absolute inset-0`} />
       </div>

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className=" backdrop-blur-md bg-black/50 mt-48 side-section border-t-2 border-white">
+    <footer className=" backdrop-blur-md bg-black/50 mt-20 md:mt-48 side-section border-t-2 border-white">
       <div className="container mx-auto p-10 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
           <p className="uppercase font-bold text-md text-white">Company Name</p>

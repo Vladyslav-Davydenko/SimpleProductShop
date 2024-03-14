@@ -65,7 +65,7 @@ export default function CartCheckOut({
     <>
       {isSucceed && <SucceedPayment />}
       <form
-        className="w-[30%] side-section h-full border-white border-l-2 flex justify-start items-center flex-col"
+        className="side-section h-full border-white md:border-l-2 flex justify-start items-center flex-col"
         onSubmit={onSubmit}
       >
         <div className="mt-20 pt-20 border-t-4 border-white w-[80%]">
@@ -111,7 +111,7 @@ export default function CartCheckOut({
               </a>
             </label>
           </div>
-          <div className="flex justify-center items-center mt-10">
+          <div className="flex justify-center items-center my-10">
             <button
               className="flex gap-4 justify-center items-center opacity-80 hover:opacity-100 transition-all duration-300 bg-blue-500 rounded-full px-6 py-3 text-white hover:-translate-y-0.5 active:translate-y-0.5 disabled:bg-gray-500 disabled:transform-none"
               disabled={!isAgreed || cartIsEmpty || isLoading}
