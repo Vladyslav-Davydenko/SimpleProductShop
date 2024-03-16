@@ -15,7 +15,7 @@ export default function CartItems({
   return (
     <div className="">
       <div className="grid grid-cols-5 text-center sticky top-0 left-0 right-0 backdrop-blur-md bg-black/50 z-10 py-4">
-        <p className=" uppercase font-semibold text-md opacity-80 col-span-2">
+        <p className=" uppercase font-semibold text-sm md:text-md opacity-80 col-span-2">
           Product
         </p>
         <p className=" uppercase font-semibold text-sm md:text-md opacity-80">
