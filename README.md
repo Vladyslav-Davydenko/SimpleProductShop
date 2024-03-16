@@ -11,6 +11,7 @@ Welcome to Simple Product Store, a project built with TypeScript using Next.js A
 - **Stripe**: Stripe integration enables secure and seamless payment processing for users.
 - **Heroicons**: Heroicons are used for high-quality SVG icons throughout the project.
 - **Tailwind CSS**: Tailwind CSS is utilized for rapid and responsive UI development, ensuring a modern and visually appealing design.
+- **Versel**: For project hosting.
 
 ## Getting Started
 
@@ -53,6 +54,10 @@ To get started with Simple Product Store, follow these steps:
 ## Contributing
 
 Contributions to Simple Product Store are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
+
+## Live Demo (Versel)
+
+https://simple-product-shop.vercel.app
 
 ## Preview
 
